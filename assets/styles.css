@@ -1,0 +1,64 @@
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+   background-color: rgba(245,245,245,0.9);
+   min-height: 100%;
+   position: relative;
+   margin: 0;
+   padding: 0;
+}
+body {
+    background-image: url("/assets/img/frontend.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+h1 {
+    position: relative;
+    margin-top: 10%;
+    margin-left: 35%;
+    color: #f2f2f4;
+}
+h1:hover {
+    color: #e86410;
+}
+
+/****************************************MENU*********************************/
+#nav {
+    position: relative;
+    margin-left: 32%;
+}
+
+li {
+    font-size: 2em;
+    list-style: none;
+    text-decoration: none;
+}
+#nav > li > a {
+    color: #000;
+    text-decoration: none;
+    background-color: #e86410;
+    border-radius: 5px;
+}
+
+/***************************FOOTER*******************************************/
+.footer {
+    height: 100px;
+    position: absolute;
+    width: 100vw;
+    left: 0px;
+    bottom: 0px;
+    background-color: black;
+}
+.footer > ul > li > a:hover {
+    color: #e86410;
+}
+
+.footer > ul {
+    margin-left: 85%;
+}
+
