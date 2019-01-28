@@ -1,0 +1,754 @@
+ /**   
+    
+
+    
+    
+    function type(d){
+    d.dx = +d.dx;
+    d.dy = +d.dy;
+    d.x = parseInt(d.x);
+    d.y = parseInt(d.y);
+    return d;
+    };   
+    
+ 
+function render(data, color) {
+    var rects = svg.selectAll("rect").data(data);
+    
+    //d3.csv("/assets/data/reviews.csv", type, render).get(function(error, data)
+    
+    
+    
+
+/*******************************************************************************
+Author: Venkata Karthik Thota
+File: gdpBarGraph.js
+See google style guide on JavaScript code sytle if needed.
+*******************************************************************************/
+
+// See D3 margin convention: http://bl.ocks.org/mbostock/3019563
+var margin = {top: 20, right: 10, bottom: 100, left:50},
+    width = 700 - margin.right - margin.left,
+    height = 500 - margin.top - margin.bottom;
+
+/*------------------------------------------------------------------------------
+define SVG
+Still confused about SVG? see Chapter 3.
+The "g" element is used as a container for grouping objects. The SVG will be
+in "lightgrey" backgorund to help you visualize it.
+See https://developer.mozilla.org/en-US/docs/Web/SVG/Element/g for more info
+------------------------------------------------------------------------------*/
+var svg = d3.select("body")
+    .append("svg")
+      .attr ({
+        "width": width + margin.right + margin.left,
+        "height": height + margin.top + margin.bottom
+      })
+    .append("g")
+      .attr("transform","translate(" + margin.left + "," + margin.right + ")");
+
+
+/* -----------------------------------------------------------------------------
+SCALE and AXIS are two different methods of D3. See D3 API Refrence for info on
+AXIS and SCALES. See D3 API Refrence to understand the difference between
+Ordinal vs Linear scale.
+------------------------------------------------------------------------------*/
+// define x and y scales
+var xScale = d3.scale.ordinal()
+    .rangeRoundBands([0,width], 0.2, 0.2);
+
+var yScale = d3.scale.linear()
+    .range([height, 0]);
+
+// define x axis and y axis
+var xAxis = d3.svg.axis()
+    .scale(xScale)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(yScale)
+    .orient("left");
+
+/* -----------------------------------------------------------------------------
+To understand how to import data. See D3 API refrence on CSV. Understand
+the difference between .csv, .tsv and .json files. To import a .tsv or
+.json file use d3.tsv() or d3.json(), respectively.
+------------------------------------------------------------------------------*/
+d3.csv("gdp.csv", function(error,data) {
+  if(error) console.log("Error: data not loaded!");
+
+  /*----------------------------------------------------------------------------
+  Convert data if necessary. We want to make sure our gdp vaulues are
+  represented as integers rather than strings. Use "+" before the variable to
+  convert a string represenation of a number to an actual number. Sometimes
+  the data will be in number format, but when in doubt use "+" to avoid issues.
+  ----------------------------------------------------------------------------*/
+  data.forEach(function(d) {
+    d.country = d.country;
+    d.gdp = +d.gdp;       // try removing the + and see what the console prints
+    console.log(d.gdp);   // use console.log to confirm
+  });
+
+  // sort the gdp values
+  data.sort(function(a,b) {
+    return b.gdp - a.gdp;
+  });
+
+  // Specify the domains of the x and y scales
+  xScale.domain(data.map(function(d) { return d.country; }) );
+  yScale.domain([0, d3.max(data, function(d) { return d.gdp; } ) ]);
+
+  svg.selectAll('rect')
+    .data(data)
+    .enter()
+    .append('rect')
+    .attr("height", 0)
+    .attr("y", height)
+    .transition().duration(3000)
+    .delay( function(d,i) { return i * 200; })
+    // attributes can be also combined under one .attr
+    .attr({
+      "x": function(d) { return xScale(d.country); },
+      "y": function(d) { return yScale(d.gdp); },
+      "width": xScale.rangeBand(),
+      "height": function(d) { return  height - yScale(d.gdp); }
+    })
+    .style("fill", function(d,i) { return 'rgb(20, 20, ' + ((i * 30) + 100) + ')'});
+
+
+        svg.selectAll('text')
+            .data(data)
+            .enter()
+            .append('text')
+
+
+
+            .text(function(d){
+                return d.gdp;
+            })
+            .attr({
+                "x": function(d){ return xScale(d.country) +  xScale.rangeBand()/2; },
+                "y": function(d){ return yScale(d.gdp)+ 12; },
+                "font-family": 'sans-serif',
+                "font-size": '13px',
+                "font-weight": 'bold',
+                "fill": 'white',
+                "text-anchor": 'middle'
+            });
+
+    // Draw xAxis and position the label
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis)
+        .selectAll("text")
+        .attr("dx", "-.8em")
+        .attr("dy", ".25em")
+        .attr("transform", "rotate(-60)" )
+        .style("text-anchor", "end")
+        .attr("font-size", "10px");
+
+
+    // Draw yAxis and postion the label
+    svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
+        .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("x", -height/2)
+        .attr("dy", "-3em")
+        .style("text-anchor", "middle")
+        .text("Trillions of US Dollars ($)");
+})
+
+
+
+
+
+            
+
+            
+
+    
+/***********************************************************************/       
+
+
+/**************************************************************************/
+
+    /**var svg = d3.select("#draw-here").append("svg")
+                .attr("width", 700)
+                .attr("height", 500)
+                
+        svg.selectAll("rect")
+            .data(data)
+            .enter()
+                .append("rect")
+                .attr("width", function (d) { return d.ratings * 10; })
+                .attr("height", 48)
+                .attr("y", function (d, i) { return i * 50; })
+                .attr("fill", "blue")
+                
+        svg.selectAll("text")
+            .data(data)
+            .enter()
+                .append("text")
+                .attr("fill", "white")
+                .attr("y", function (d, i) { return i * 50 + 24;})
+                .text(function (d) { return d.month; })**/
+                
+    /**Course Work**/      
+          
+           /* var h = 500;
+             var w = 500;
+             var barPadding = 1;  
+             
+        var scale = d3.scale.linear()
+                .domain([0, d3.max()])
+                .range([0, h])
+             
+            
+            var colWidth = w / dataset.length;
+            var barwidth = colWidth - barPadding;
+    
+    var svg = d3.select("#draw-here")
+                .append("svg")
+                .attr("height", h)
+                .attr("width", w);
+                
+    svg.selectAll("rect")
+            .data(data)
+            .enter()
+            .append("rect")
+            .attr("x", function (d, i){
+                return i * (dataset.length);
+            })
+            .attr("y", function (d) { 
+                return h -d;
+                })
+            .attr("height", function (d) { 
+                
+                return d;
+                
+            })
+            .attr("width", (w / dataset.length) - barPadding);
+                
+    svg.selectAll("text")
+            .data(dataset)
+            .enter()
+            .append("text")
+            .text(function (d) {
+                return d;
+            })
+            .attr("text-anchor", "middle")
+            .attr("x", function (d, i) {
+                return i * colWidth + barWidth / 2;
+            })
+            .attr("y", function (d){
+                return h - d + 14;
+            })
+            .attr("font-family", "sans-serif")
+            .attr("font-size", "11px")
+            .attr("fill", "white")*/
+
+
+
+    
+            /*basic bar chart*/
+          /*  var dataArray = [20, 40, 50];
+            
+                var achilesvg = d3.select("body")
+                            .append("svg")
+                            .attr("width", 500)
+                            .attr("height", 500);
+                
+                var bars = achilesvg.selectAll("rect")
+                            .data(dataArray)
+                            .enter()
+                                .append("rect")
+                                .attr("width", function(d) { return d * 10; })
+                                .attr("height", 50)
+                                .attr("y", function(d, i){ return i *100});*/
+            
+           
+          /*bar chart with scale*/
+         /* var dataArray = [20, 40, 50, 60];
+          var width = 500;
+          var height = 500;
+          
+          var widthScale = d3.scale.linear()
+                            .domain([0, 60])
+                            .range([0, width]);
+          var color = d3.scale.linear()
+                            .domain([0, 60])
+                            .range(["red", "blue"])
+                            
+            
+            
+                var achilesvg = d3.select("body")
+                            .append("svg")
+                            .attr("width", width)
+                            .attr("height", height);
+                
+                var bars = achilesvg.selectAll("rect")
+                            .data(dataArray)
+                            .enter()
+                                .append("rect")
+                                .attr("width", function(d) { return widthScale(d); })
+                                .attr("height", 50)
+                                .attr("fill", function (d) { return color(d) })
+                                .attr("y", function(d, i){ return i *100});*/
+                                
+          /*group and axes*/
+          /*var dataArray = [5, 20, 40, 50, 60];
+          var width = 500;
+          var height = 500;
+          
+          var widthScale = d3.scale.linear()
+                            .domain([0, 60])
+                            .range([0, width]);
+          var color = d3.scale.linear()
+                            .domain([0, 60])
+                            .range(["red", "blue"])
+                            
+          var axis = d3.svg.axis()
+                        .ticks(5)
+                        .scale(widthScale);
+                            
+            
+            
+                var achilesvg = d3.select("body")
+                            .append("svg")
+                            .attr("width", width)
+                            .attr("height", height)
+                            
+                            .append("g")
+                            .attr("transform", "translate(20, 0)");
+                            
+                
+                var bars = achilesvg.selectAll("rect")
+                            .data(dataArray)
+                            .enter()
+                                .append("rect")
+                                .attr("width", function(d) { return widthScale(d); })
+                                .attr("height", 50)
+                                .attr("fill", function (d) { return color(d) })
+                                .attr("y", function(d, i){ return i *100});
+                                
+                achilesvg.append("g")
+                                .attr("transform", "translate(0, 470)")
+                                .call(axis);
+          
+          
+           
+           /*Basic Structures*/
+            /*var circle = achilesvg.append("circle")
+                            .attr("cx", 250)
+                            .attr("cy", 250)
+                            .attr("r", 50)
+                            .attr("fill", "red");
+                            
+            var rect = achilesvg.append("rect")
+                        .attr("width", 100)
+                        .attr("height", 50);
+                        
+                        
+            var line = achilesvg.append("line")
+                        .attr("x1", 0)
+                        .attr("y1", 100)
+                        .attr("x2", 400)
+                        .attr("y2", 400)
+                        .attr("stroke", "green")
+                        .attr("stroke-width", 10);*/
+
+
+
+        
+/**
+
+
+var parseDate=D3.timeParse("%m/%d/%Y");
+
+d3.csv("prices.csv")
+    .row(fucntion(d){ return { date:parseDate(d.date),price:parseNumber(d.price.trim().slice(1))}; })
+    .get(function(error, data){
+        console.log(data);
+        
+    var height = 400;
+    var width = 600;
+    
+    var maxDate = d3.max(data,function(d){ return d.date; });
+    var minDate = d3.min(data,function(d){ return d.date; });
+    var maxPrice = d3.max(data,function(d){ return d.price; });
+    
+    console.log(maxDate);
+    conosole.log(minDate);
+    console.log(maxPrice);
+    
+    var y = d3.scaleLinear()
+            .domain([0,maxPrice])
+            .range([height,0]);
+            
+    var x = d3.scaleTime()
+            .domain([minDate,maxDate])
+            .range([0,width]);
+            
+ /*******************************************************************setting the AXIS********************************************************************/
+   /** var yAxis = d3.axisLeft(y);
+    var xAxis = d3.axisBottom(x);
+/*********************************************************************************************************************************************************/
+    
+   /** var svg = d3.select('body').append('svg')
+            .attr('height', '100%')
+            .attr('width', '100%');
+            
+    var chartGroup = svg.append('g')
+                    .attr('transform','translate(50,50)');
+                    
+    var line = d3.line()
+                        .x(function(d){ return x(d.date); })
+                        .y(function(d){ return y(d.price);});
+    chartGroup.append('path').attr('d',line(data));
+    chartGroup.append('g').attr('class','x axis').attr('transform','translate(0,+height+)').call(xAxis);
+    chartGroup.append('g').attr('class','x axis').call(yAxis);
+    });
+**/
+
+
+
+
+/**function type(d){
+    d.x = parseInt(d.x);
+    d.y = parseInt(d.y);
+    return d;
+}**/
+
+
+
+
+/*********************************************************************SCALE***********************************************************
+var scale = d3.scale.linear();
+
+scale.domain([0, 1]); //data space
+scale.range([0, 120]); //pixel space
+
+/** var scale = d3.scale.linear()
+            .domain([0, 1])//setter functions
+            .range([0, 120]);//
+            
+    console.log(scale.domain());//if you call the scale function without any argument, it will return the array that was set before. it acts as a getter function
+    console.log(scale.range());
+    
+************************************************************************************************************************************************************************************/
+
+
+
+
+
+
+
+
+
+/**
+console.log(scale(0));
+console.log(scale(0.5));
+console.log(scale(1));
+
+var scale = d3.scale.ordinal()//ordered or unique domain.
+        .domain(["A", "B", "c"])
+        .range(["Apple", "Banana", "Coconut"]);
+        
+    
+        
+/**var svg = d3.select("body").append("svg");
+
+svg.attr("width", 250);
+svg.attr("height", 250);
+
+var rect = svg.append("rect");
+
+rect.attr("x", 50);
+rect.attr("y", 50);
+rect.attr("width", 20);
+rect.attr("height", 20);**/
+
+
+
+
+/**********sum of d3 pipeline********************//**
+
+var data = [];//data to be visualized
+
+//var scale = d3.scale.ordinal()
+var scale = d3.scale.linear()
+        .domain([1, 5])// data space
+        .range([0, 200]); // pixel space
+        
+//d3 data binding and it execute for a case where there is no rectangle but there is a data and create them with the arrays
+var svg = d3.selectAll("rect")
+        .data(data)
+    .enter().append("rect")
+        .attr("x", function (d) { return scale(d); })
+        .attr("y", 50)
+        .attr("width", 50)
+        .attr("height", 20);
+        
+/***********************color************************//**
+
+var scale = d3.scale.linear()
+        .domain([1, 5])// data space
+        .range([0, 200]); // pixel space
+        
+var svg = d3.select("body").append("svg")
+        .attr("width", 250)
+        .attr("height", 250);
+        
+function render(data, color) {
+    var rects = svg.selectAll("rect").data(data);
+    
+//Enter-static properties
+    rects.enter().append("rect")
+        .attr("y", 50)
+        .attr("width", 20)
+        .attr("height", 20);
+    
+ //Update-dynamic properties
+    rects
+        .attr("x", scale)//same as function(d) { return scale(d); })
+        .attr("fill", color);
+        
+// Exit-removes and throw away dorm elements
+    rects.exit().remove();
+}
+
+
+d3.csv("data.csv", type, render);
+
+render([1, 2, 3,], "red");
+render([1, 2, 3, 4, 5], "blue");
+
+//min and max value
+d3.csv("reviews.csv", type, function (data){
+    var min = d3.min(data, function(d){ return d.sepal_length; });
+    var min = d3.min(data, function(d){ return d.sepal_length; });
+    console.log([min, max]);
+});
+   
+// provides the mini and max value in an array in one function call 
+d3.csv("reviews.csv", type, function (data){
+    var extent = d3.extent(data, function (d){ return d.sepal_length; });
+    console.log(extent);
+});
+
+// parsing strings
+/** function type(d){
+    d.sepal_length = +d.sepal_length;
+    d.sepal_width = +d.sepal_width;
+    d.petal_length = +d.petal_length;
+    d.petal_width = +d.petal_width;
+    
+}**/
+
+        
+     /** EXAMPLE CODE
+        var svg = d3.select("body").append("svg")
+            .attr("width", 250)
+            .attr("height", 250);
+            
+        var xScale = d3.scale.linear().range([0, 250]);
+        var yScale = d3.scale.linear().range([0, 250]);
+        
+        function render(data){
+            
+            xScale.domain(d3.extent(data, function (d){ return d.sepal_length; }));
+            yScale.domain(d3.extent(data, function (d){ return d.petal_length; }));
+            
+            var circles = svg.selectAll("circle").data(data);
+            circles.enter().append("circle").attr("r", 10);
+            circles
+                .attr("cx", function (d) { return xScale(d.sepal_length); })
+                .attr("cy", function (d) { return yScale(d.petal_length); });
+                
+            cirlce.exit().remove();
+        }
+     **/ 
+     
+     
+     
+     
+/******************************************************************Histogram************************************************************************/
+    /** var width = 500;
+     var height = 500;
+     var padding = 50;
+     
+     d3.csv("assets/data/reviews.csv", function (data) {
+         var map = data.map(function (i) { return parseInt(i.ratings); })
+        
+        var histogram = d3.layout.histogram()
+                            .bins(7)
+                            (map)
+                            
+        var y = d3.scale.linear()
+             .domain([0,d3.max(histogram.map(function (i) { return i.length; }))])
+             .range([0,height]);
+             
+        var x = d3.scale.linear()
+                    .domain([0,d3.max(map)])
+                    .range([0,width])
+                    
+        var xAxis = d3.svg.axis()
+                    .scale(x)
+                    .orient("bottom");
+             
+        var svg = d3.select("#draw-here").append("svg")
+                .attr("width", width)
+                .attr("height", height + padding)
+                .append("g")
+                    .attr("transform", "translate(20,0)");
+                
+        var group = svg.append("g")
+                    .attr("transform", "translate(0," + height + ")")
+                    .call(xAxis);
+                
+        var bars = svg.selectAll(".bars")
+                    .data(histogram)
+                    .enter()
+                        .append("g")
+                        
+        bars.append("rect")
+                .attr("x", function (d) { return x(d.x); })
+                .attr("y", function (d) { return 500 - y(d.y); })
+                .attr("width", function (d) {return x(d.dx); })
+                .attr("height", function (d) { return y(d.y);})
+                .attr("fill", "steelblue")
+                
+                
+        bars.append("text")
+            .attr("x", function (d) { return x(d.x); })
+            .attr("y", function (d) {return 500 - y(d.y); })
+            .attr("dy", "20px")
+            .attr("dx", function (d) { return x(d.dx/2); })
+            .attr("fill", "#fff")
+            .attr("text-anchor", "middle")
+            .text(function (d) { return d.y; })
+            console.log(histogram);
+     })**/
+     
+     
+       <script>
+             var h = 500;
+             var w = 500;
+             var barPadding = 1;
+
+    var dataset = [ 
+        450, 100, 100, 275, 500, 25, 350, 120, 80, 130, 110, 102, 375, 200, 175, 168,
+        180, 230, 205
+    ];
+    
+    var colWidth = w / dataset.length;
+    
+    var svg = d3.select("#draw-here")
+                .append("svg")
+                .attr("height", h)
+                .attr("width", w);
+                
+    svg.selectAll("rect")
+            .data(dataset)
+            .enter()
+            .append("rect")
+            .attr("x", function (d, i){
+                return i * colWidth;
+            })
+            .attr("y", function (d) { 
+                return h -d;
+                })
+            .attr("height", function (d) { 
+                
+                return d;
+                
+            })
+            .attr("width", colWidth - barPadding);
+            
+            
+            
+            
+            
+            var margin = {top: 21, right: 10, bottom: 100, left:50},
+    width = 700 - margin.right - margin.left,
+    height = 500 - margin.top - margin.bottom;
+        
+    
+        
+var xScale = d3.scale.ordinal()
+    .rangeRoundBands([0,width], 0.2, 0.2);
+    
+
+var yScale = d3.scale.linear()
+    .range([height, 0]);
+            
+var xAxis = d3.svg.axis()
+    .scale(xScale)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(yScale)
+    .orient("left");
+    
+            
+d3.csv("assets/data/reviews.csv", function(error,data) {
+  if(error) console.log("Error: data not loaded!");
+   
+    
+    data.forEach(function(d) {
+    d.weeks= d.weeks;
+    d.ratings = +d.ratings;       // try removing the + and see what the console prints
+    console.log(d.ratings); 
+    console.log(d.weeks);
+    // use console.log to confirm
+  });
+     
+     
+     data.sort(function(a,b) {
+    return b.ratings - a.ratings;
+  });
+   
+   xScale.domain(data.map(function(d) { return d.weeks; }) );
+  yScale.domain([0, d3.max(data, function(d) { return d.ratings; } ) ]);
+  
+  
+  
+  
+   var svg = d3.select(".customers-feedback")
+    .append("svg")
+      .attr ({
+        "width": width + margin.right + margin.left,
+        "height": height + margin.top + margin.bottom
+      })
+    .append("g")
+      .attr("transform","translate(" + margin.left + "," + margin.right + ")");
+       console.log(xScale);
+  
+  
+  
+    
+     svg.selectAll('rect')
+    .data(data)
+    .enter()
+    .append('rect')
+    .attr("height", 0)
+    .attr("y", height)
+    .transition().duration(3000)
+    .delay( function(d,i) { return i * 200; })
+});
+    
+ 
+            
+        </script>-->
+        
+        
+         <!-- <svg width="250" height="250">
+        <rect x="50" y="50" width="20" height="20" fill="#fff"></rect>
+  </svg>-->
+    
+    
+    
+        

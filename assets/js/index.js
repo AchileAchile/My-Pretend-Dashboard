@@ -1,290 +1,78 @@
-
-/**function type(d){
-    d.x = +d.x;
-    d.y = +d.y;
-    d.x = parseInt(d.x);
-    d.y = parseInt(d.y);
-    return d;
-}
- 
-
-d3.csv("/assets/data/reviews.csv", type).get(function(error, data){
-    //console.log(data);
+queue()
+    .defer(d3.json, "assets/data/reviews.json")
+    .await(easyGraphs);
     
-    var svg = d3.select("#draw-here").append("svg")
-                .attr("width", 700)
-                .attr("height", 500)
-                
-        svg.selectAll("rect")
-            .data(data)
-            .enter()
-                .append("rect")
-                .attr("width", function (d) { return d.ratings * 10; })
-                .attr("height", 48)
-                .attr("y", function (d, i) { return i * 50; })
-                .attr("fill", "blue")
-                
-        svg.selectAll("text")
-            .data(data)
-            .enter()
-                .append("text")
-                .attr("fill", "white")
-                .attr("y", function (d, i) { return i * 50 + 24;})
-                .text(function (d) { return d.month; })
-})**/
-
-
-        
-/**
-
-
-var parseDate=D3.timeParse("%m/%d/%Y");
-
-d3.csv("prices.csv")
-    .row(fucntion(d){ return { date:parseDate(d.date),price:parseNumber(d.price.trim().slice(1))}; })
-    .get(function(error, data){
-        console.log(data);
-        
-    var height = 400;
-    var width = 600;
+  function easyGraphs(error, reviewsData){
     
-    var maxDate = d3.max(data,function(d){ return d.date; });
-    var minDate = d3.min(data,function(d){ return d.date; });
-    var maxPrice = d3.max(data,function(d){ return d.price; });
+    var ndx = crossfilter(reviewsData);
+    var month_dim = ndx.dimension(dc.pluck('month'));
+    var total_rating_month = month_dim.group().reduceSum(dc.pluck('rating'));
     
-    console.log(maxDate);
-    conosole.log(minDate);
-    console.log(maxPrice);
-    
-    var y = d3.scaleLinear()
-            .domain([0,maxPrice])
-            .range([height,0]);
+    dc.barChart(".customers_feedback_per_month")
+            .width(300)
+            .height(150)
+            .margins({top: 10, right: 50, bottom: 30, left: 50})
+            .dimension(month_dim)
+            .group(total_rating_month)
+            .transitionDuration(500)
+            .x(d3.scale.ordinal())
+            .xUnits(dc.units.ordinal)
+            .xAxisLabel("Month")
+            .yAxis().ticks(4);
             
-    var x = d3.scaleTime()
-            .domain([minDate,maxDate])
-            .range([0,width]);
-            
-    var yAxis = d3.axisLeft(y);
-    var xAxis = d3.axisBottom(x);
-    
-    var svg = d3.select('body').append('svg')
-            .attr('height', '100%')
-            .attr('width', '100%');
-            
-    var chartGroup = svg.append('g')
-                    .attr('transform','translate(50,50)');
-                    
-    var line = d3.line()
-                        .x(function(d){ return x(d.date); })
-                        .y(function(d){ return y(d.price);});
-    chartGroup.append('path').attr('d',line(data));
-    chartGroup.append('g').attr('class','x axis').attr('transform','translate(0,+height+)').call(xAxis);
-    chartGroup.append('g').attr('class','x axis').call(yAxis);
-    });
+          dc.renderAll();
+  }
 
-/**function type(d){
-    d.x = parseInt(d.x);
-    d.y = parseInt(d.y);
-    return d;
-}**/
-/**
-var scale = d3.scale.linear();
 
-scale.domain([0, 1]); //data space
-scale.range([0, 120]); //pixel space
 
-/** var scale = d3.scale.linear()
-            .domain([0, 1])//setter functions
-            .range([0, 120]);//
-            
-    console.log(scale.domain());//if you call the scale function without any argument, it will return the array that was set before. it acts as a getter function
-    console.log(scale.range());
-**/
-/**
-console.log(scale(0));
-console.log(scale(0.5));
-console.log(scale(1));
+/**var margin = {top: 20, right: 20, bottom: 30, left: 40};
+var width = 700 - margin.left - margin.right;
+var height = 500 - margin.top - margin.bottom;
 
-var scale = d3.scale.ordinal()//ordered or unique domain.
-        .domain(["A", "B", "c"])
-        .range(["Apple", "Banana", "Coconut"]);
-        
-    
-        
-/**var svg = d3.select("body").append("svg");
+var x = d3.scaleBand().rangeRound([0, width]).padding(0.1);
+var y = d3.scaleLinear().rangeRound([height, 0]);
 
-svg.attr("width", 250);
-svg.attr("height", 250);
+var svg = d3.select(".customers-feedback")
+              .append("svg")
+              .attr("width", width)
+              .attr("height", height);
 
-var rect = svg.append("rect");
+var g = svg.append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-rect.attr("x", 50);
-rect.attr("y", 50);
-rect.attr("width", 20);
-rect.attr("height", 20);**/
+d3.tsv("data.tsv", function(d) {
+  d.ratings = +d.ratings;
+  return d;
+  
+}, function(error, data) {
+  if (error) throw error;
+  
+  
 
-/**********sum of d3 pipeline********************//**
+  x.domain(data.map(function(d) { return d.months; }));
+  y.domain([0, d3.max(data, function(d) { return d.ratings; })]);
 
-var data = [];//data to be visualized
+  g.append("g")
+      .attr("class", "axis axis--x")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
 
-//var scale = d3.scale.ordinal()
-var scale = d3.scale.linear()
-        .domain([1, 5])// data space
-        .range([0, 200]); // pixel space
-        
-//d3 data binding and it execute for a case where there is no rectangle but there is a data and create them with the arrays
-var svg = d3.selectAll("rect")
-        .data(data)
+  g.append("g")
+      .attr("class", "axis axis--y")
+      .call(d3.axisLeft(y).ticks(10, "%"))
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", "0.71em")
+      .attr("text-anchor", "end")
+      .text("Frequency");
+
+  g.selectAll(".bar")
+    .data(data)
     .enter().append("rect")
-        .attr("x", function (d) { return scale(d); })
-        .attr("y", 50)
-        .attr("width", 50)
-        .attr("height", 20);
-        
-/***********************color************************//**
-
-var scale = d3.scale.linear()
-        .domain([1, 5])// data space
-        .range([0, 200]); // pixel space
-        
-var svg = d3.select("body").append("svg")
-        .attr("width", 250)
-        .attr("height", 250);
-        
-function render(data, color) {
-    var rects = svg.selectAll("rect").data(data);
-    
-//Enter-static properties
-    rects.enter().append("rect")
-        .attr("y", 50)
-        .attr("width", 20)
-        .attr("height", 20);
-    
- //Update-dynamic properties
-    rects
-        .attr("x", scale)//same as function(d) { return scale(d); })
-        .attr("fill", color);
-        
-// Exit-removes and throw away dorm elements
-    rects.exit().remove();
-}
-d3.csv("data.csv", type, render);
-
-render([1, 2, 3,], "red");
-render([1, 2, 3, 4, 5], "blue");
-
-//min and max value
-d3.csv("reviews.csv", type, function (data){
-    var min = d3.min(data, function(d){ return d.sepal_length; });
-    var min = d3.min(data, function(d){ return d.sepal_length; });
-    console.log([min, max]);
-});
-   
-// provides the mini and max value in an array in one function call 
-d3.csv("reviews.csv", type, function (data){
-    var extent = d3.extent(data, function (d){ return d.sepal_length; });
-    console.log(extent);
-});
-
-// parsing strings
-/** function type(d){
-    d.sepal_length = +d.sepal_length;
-    d.sepal_width = +d.sepal_width;
-    d.petal_length = +d.petal_length;
-    d.petal_width = +d.petal_width;
-    
-}**/
-
-        
-     /** EXAMPLE CODE
-        var svg = d3.select("body").append("svg")
-            .attr("width", 250)
-            .attr("height", 250);
-            
-        var xScale = d3.scale.linear().range([0, 250]);
-        var yScale = d3.scale.linear().range([0, 250]);
-        
-        function render(data){
-            
-            xScale.domain(d3.extent(data, function (d){ return d.sepal_length; }));
-            yScale.domain(d3.extent(data, function (d){ return d.petal_length; }));
-            
-            var circles = svg.selectAll("circle").data(data);
-            circles.enter().append("circle").attr("r", 10);
-            circles
-                .attr("cx", function (d) { return xScale(d.sepal_length); })
-                .attr("cy", function (d) { return yScale(d.petal_length); });
-                
-            cirlce.exit().remove();
-        }
-     **/ 
-     
-     var width = 500;
-     var height = 500;
-     var padding = 50;
-     
-     d3.csv("assets/data/reviews.csv", function (data) {
-         var map = data.map(function (i) { return parseInt(i.ratings); })
-        
-        var histogram = d3.layout.histogram()
-                            .bins(7)
-                            (map)
-                            
-        var y = d3.scale.linear()
-             .domain([0,d3.max(histogram.map(function (i) { return i.length; }))])
-             .range([0,height]);
-             
-        var x = d3.scale.linear()
-                    .domain([0,d3.max(map)])
-                    .range([0,width])
-                    
-        var xAxis = d3.svg.axis()
-                    .scale(x)
-                    .orient("bottom");
-             
-        var svg = d3.select("#draw-here").append("svg")
-                .attr("width", width)
-                .attr("height", height + padding)
-                .append("g")
-                    .attr("transform", "translate(20,0)");
-                
-        var group = svg.append("g")
-                    .attr("transform", "translate(0," + height + ")")
-                    .call(xAxis);
-                
-        var bars = svg.selectAll(".bars")
-                    .data(histogram)
-                    .enter()
-                        .append("g")
-                        
-        bars.append("rect")
-                .attr("x", function (d) { return x(d.x); })
-                .attr("y", function (d) { return 500 - y(d.y); })
-                .attr("width", function (d) {return x(d.dx); })
-                .attr("height", function (d) { return y(d.y);})
-                .attr("fill", "steelblue")
-                
-                
-        bars.append("text")
-            .attr("x", function (d) { return x(d.x); })
-            .attr("y", function (d) {return 500 - y(d.y); })
-            .attr("dy", "20px")
-            .attr("dx", function (d) { return x(d.dx/2); })
-            .attr("fill", "#fff")
-            .attr("text-anchor", "middle")
-            .text(function (d) { return d.y; })
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-            console.log(histogram);
-        
-     })
-     
-     
-        
-        
-        
+      .attr("class", "bar")
+      .attr("x", function(d) { return x(d.months); })
+      .attr("y", function(d) { return y(d.ratings); })
+      .attr("width", x.bandwidth())
+      .attr("height", function(d) { return height - y(d.ratings); });
+});**/
