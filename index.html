@@ -15,127 +15,66 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"></script>
    
     
-   <!-- <script type="text/javascript" src="assets/js/index.js"></script>-->
+   <!-- <script type="text/javascript" src="assets/js/reviews.js"></script>-->
     <link rel="stylesheet" href="assets/styles.css" type="text/css" />
     
-    <title>Holiday Easy</title>
+    <title>Pretend Dashboard</title>
 </head>
 
 <body>
-    <h1>holiday <i>easy</i></h1><br>
     
+   
     
-    <section>
-        <div>
-            <ul id="nav">
-                <li>
-                    <a href="destination.html">Destination</a>
-                </li>
-                <li>
-                    <a href="tourist.html"><i aria-hidden="true"></i><span>Tourist Attraction</span></a>
-                </li>
-                <li>
-                    <a href="accomodation.html" aria-hidden="true"></i><span>Accomodation</span></a>
-                </li>
-                <li>
-                    <a href="restaurants.html"><i aria-hidden="true"></i><span>Bars and Restaurants</span></a>
-                </li>
-            </ul>
-        </div>
-        <div class="container">
-            <div class="input-group">
-                <input type="text" class="form-control" id="my-search" placeholder="Search Me...">
-            <span class="input-group-btn">
-             <button class="btn btn-search" type="button"><i class="fa fa-search fa-fw"></i> Search</button>
-           </span>
+     <aside style="background-color: white">
+         
+       <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">Holiday <b><i>Easy</i></b> Customer review dashboard for 2018</a>
             </div>
         </div>
-        <br>
-        
-       <div class="container">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for Bars and Restaurants...">
-                <span class="input-group-btn">
-             <button class="btn btn-search" type="button"><i class="fa fa-search fa-fw"></i> Search</button>
-           </span>
-            </div>
-        </div>
-
-        <br>
-
-        <div class="container">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for Destination...">
-                <span class="input-group-btn">
-             <button class="btn btn-search" type="button"><i class="fa fa-search fa-fw"></i> Search</button>
-           </span>
-            </div>
-        </div>
-        <br>
-        <div class="container">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for Tourist Attraction...">
-                <span class="input-group-btn">
-             <button class="btn btn-search" type="button"><i class="fa fa-search fa-fw"></i> Search</button>
-           </span>
-            </div>
-        </div>
-    </section>
+    </nav>
     
-    <aside style="background-color: white;">
-        
-            <h2>CUSTOMER REVIEW CHART FOR 2018</h2><br><br>
-                    
-            <h4>GROSS CUSTOMER FEEDBACK PER MONTH</h4>
-            <div class=customer_feedback_per_month></div>
+        <div class="container">
+            <div class="row">
                 
-            <h4>GROSS CUSTOMER FEEDBACK PER WEEK</h4>
-            <div class="customer_feedback_per_week"></div>
+                <div class="col-md-offset-3" id="week_selector">Week distribution  e.g Numbers of 'First Weeks' in 2018  </div>
+                <br>
+                <div class="col-md-offset-3" id="Month_selector">Week distribution e.g Total Numbers of 'Weeks' per Month</div>
+            </div><br>
+            <div class="row">
+                <div class="col-md-6" id="stacked_chart_week">Customer 'rating' per 'week' distribution per Month</div>
+                <div class="col-md-6" id="customer_feedback_per_week">Gross Customer 'rating' per 'week' distribution</div>
+            </div><br>
+            <div class="row">
+                 <div class="col-md-4" id=customer_feedback_per_month>Gross Customer 'rating' per Month</div>
+                <div class="col-md-4" id="average_rating_month">Average Customer 'rating' per 'Month' </div>
+            <div class="col-md-4" id="average_rating_week">Average Customer 'rating' per 'week' distribution</div>
+            </div><br>
             
+           <div class="row">
+                <div class="col-md-4" id="pie_customers_feedback_per_month">Customer 'rating' per 'Month'</div>
+                <div class="col-md-4" id="pie_customer_feedback_per_week">Customer 'rating' per <i style="color: red;">'week'</i> distribution</div>
+                <div class="col-md-4" id="derived">Derived Dimensions</div>
+          </div><br>
+           <div class="row"> 
+                <div id="scatter-plot">Scatter Plot showing Customer 'rating' at a glance</div>
+            </div><br>
+           <div class="row">
+            <div id="date_annual_customers_feedback_chart">Date dimension showing customer feedback per week per month</div>
+          </div> 
             
-            <h4>CUSTOMER FEEDBACK PER MONTH</h4>
-            <span class="pie_customers_feedback_per_month"></span>
                 
-            <h4>CUSTOMER FEEDBACK PER WEEK</h4>
-            <span class="pie_customer_feedback_per_week"></span>
-            
-            
-            <h4>WEEKLY PRESENTATION OF ANNUAL CUSTOMER FEEDBACK</h4>
-            <div class="date_annual_customers_feedback_chart"></div><br><br>
-                
-            <h4>LINEAR PRESENTATION OF ANNUAL CUSTOMER FEEDBACK</4>
+            <!--<h4>CUSTOMER FEEDBACK ON A LINE GRAPH</4>
             <div class="line_annual_customers_feedback"></div><br><br>
-           
-            <h4>COMPOSITE CHART SHOWING A WEEKLY CUSTOMER REVIEW DATA FOR EACH MONTH</h4>
+            
+           <h4>COMPOSITE CHART SHOWING A WEEKLY CUSTOMER REVIEW DATA FOR EACH MONTH</h4>
             <div class="composite-chart"></div>
             
             <h4>COMPOSITE CHART SHOWING A MONTHLY PRESENTATION OF CUSTOMER REVIEW DATA</h4>
-            <div class="composite-month"></div>
-            
-            <h4>WEEKLY PRESENTATION OF CUSTOMER REVIEW DATA PER MONTH</h4>
-            <div class="stacked_chart_week"></div>
-            
-            <h4>SCATTER PLOT SHOWING A WEEKLY CUSTOMER REVIEW DATA FOR THE YEAR</h4>
-            <div class="scatter-plot"></div><br><br>
-            
-            <h4>DERIVED DIMENSIONS</h4>
-            <span class="derived"></span>
-            
-            <h4>AVERAGE RATING PER MONTH</h4>
-            <div class="average_rating_month">
-                <a class="reset" href="javascript:gainOrLossChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-                <span class="reset" style="display: none;">Current filter: <span class="filter"></span>
-            </div>
-            
-            <h4>BUBBLE BAR CHART FOR 2018</h4>
-            <div class="bubble_chart">
-                <a class="reset" href="javascript:gainOrLossChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-                <span class="reset" style="display: none;">Current filter: <span class="filter"></span>
-            </div>
-        
-    </aside>
-    
-    <br><br>
+            <div class="composite-month"></div>-->
+        </div>
+    </aside><br><br>
     
     <footer>
         <ul class="list-inline social-links">
@@ -147,86 +86,96 @@
             <li><a target="_blank" href="#"><i class="fa fa-youtube"></i></a></li>
         </ul>
     </footer>
+    
     <script>
         var customerReviewData = [
-                {"date": "01/01/2018", "Month": "Jan", "week": "first",  "rating":50},
-                {"date": "01/02/2018", "Month": "Feb", "week": "first", "rating": 91},
-                {"date": "01/03/2018", "Month": "Mar", "week": "first", "rating": 11},
-                {"date": "01/04/2018", "Month": "Apr", "week": "first", "rating": 60},
-                {"date": "01/05/2018", "Month": "May", "week": "first", "rating": 75},
-                {"date": "01/06/2018", "Month": "Jun", "week": "first", "rating": 99},
-                {"date": "01/07/2018", "Month": "Jul", "week": "first", "rating": 77},
-                {"date": "01/08/2018", "Month": "Aug","week": "first", "rating": 89},
-                {"date": "01/09/2018", "Month": "Sept","week": "first", "rating": 80},
-                {"date": "01/10/2018", "Month": "Oct", "week": "first", "rating": 99},
-                {"date": "01/11/2018", "Month": "Nov", "week": "first", "rating": 100},
-                {"date": "01/12/2018", "Month": "Dec", "week": "first", "rating": 11},
-                {"date": "08/01/2018", "Month": "Jan", "week": "second",  "rating": 23},
-                {"date": "05/02/2018", "Month": "Feb", "week": "second", "rating": 60},
-                {"date": "05/03/2018", "Month": "Mar", "week": "second", "rating": 95},
-                {"date": "09/04/2018", "Month": "Apr", "week": "second", "rating": 26},
-                {"date": "07/05/2018", "Month": "May", "week": "second", "rating": 27},
-                {"date": "04/06/2018", "Month": "Jun", "week": "second", "rating": 18},
-                {"date": "09/07/2018", "Month": "Jul", "week": "second", "rating": 69},
-                {"date": "06/08/2018", "Month": "Aug","week": "second", "rating": 70},
-                {"date": "10/09/2018", "Month": "Sept","week": "second", "rating": 39},
-                {"date": "08/10/2018", "Month": "Oct", "week": "second", "rating": 70},
-                {"date": "05/10/2018", "Month": "Nov", "week": "second", "rating": 33},
-                {"date": "10/12/2018", "Month": "Dec", "week": "second", "rating": 39},
-                {"date": "15/01/2018", "Month": "Jan", "week": "third",  "rating": 15},
-                {"date": "19/02/2018", "Month": "Feb", "week": "third", "rating": 100},
-                {"date": "12/03/2018", "Month": "Mar", "week": "third", "rating": 99},
-                {"date": "16/04/2018", "Month": "Apr", "week": "third", "rating": 30},
-                {"date": "21/05/2018", "Month": "May", "week": "third", "rating": 98},
-                {"date": "18/06/2018", "Month": "Jun", "week": "third", "rating": 60},
-                {"date": "18/07/2018", "Month": "Jul", "week": "third", "rating": 37},
-                {"date": "16/08/2018", "Month": "Aug","week": "third", "rating": 75},
-                {"date": "13/09/2018", "Month": "Sept","week": "third", "rating": 33},
-                {"date": "15/10/2018", "Month": "Oct", "week": "third", "rating": 54},
-                {"date": "19/11/2018", "Month": "Nov", "week": "third", "rating": 75},
-                {"date": "17/11/2018", "Month": "Dec", "week": "third", "rating": 66},
-                {"date": "22/01/2018", "Month": "Jan", "week": "fourth",  "rating": 60},
-                {"date": "26/02/2018", "Month": "Feb", "week": "fourth", "rating": 80},
-                {"date": "26/03/2018", "Month": "Mar", "week": "fourth", "rating": 99},
-                {"date": "23/04/2018", "Month": "Apr", "week": "fourth", "rating": 63},
-                {"date": "21/05/2018", "Month": "May", "week": "fourth", "rating": 60},
-                {"date": "25/06/2018", "Month": "Jun", "week": "fourth", "rating": 47},
-                {"date": "23/07/2018", "Month": "Jul", "week": "fourth", "rating": 40},
-                {"date": "20/08/2018", "Month": "Aug","week": "fourth", "rating": 55},
-                {"date": "24/09/2018", "Month": "Sept","week": "fourth", "rating": 75},
-                {"date": "22/10/2018", "Month": "Oct", "week": "fourth", "rating": 66},
-                {"date": "26/11/2018", "Month": "Nov", "week": "fourth", "rating": 97},
-                {"date": "24/12/2018", "Month": "Dec", "week": "fourth", "rating": 100},
+                {"date": "01/01/2018", "Month": "Jan", "week": "First",  "rating":50},
+                {"date": "01/02/2018", "Month": "Feb", "week": "First", "rating": 91},
+                {"date": "01/03/2018", "Month": "Mar", "week": "First", "rating": 11},
+                {"date": "01/04/2018", "Month": "Apr", "week": "First", "rating": 60},
+                {"date": "01/05/2018", "Month": "May", "week": "First", "rating": 75},
+                {"date": "01/06/2018", "Month": "Jun", "week": "First", "rating": 99},
+                {"date": "01/07/2018", "Month": "Jul", "week": "First", "rating": 77},
+                {"date": "01/08/2018", "Month": "Aug","week": "First", "rating": 89},
+                {"date": "01/09/2018", "Month": "Sept","week": "First", "rating": 80},
+                {"date": "01/10/2018", "Month": "Oct", "week": "First", "rating": 99},
+                {"date": "01/11/2018", "Month": "Nov", "week": "First", "rating": 100},
+                {"date": "01/12/2018", "Month": "Dec", "week": "First", "rating": 11},
+                {"date": "08/01/2018", "Month": "Jan", "week": "Second",  "rating": 23},
+                {"date": "05/02/2018", "Month": "Feb", "week": "Second", "rating": 60},
+                {"date": "05/03/2018", "Month": "Mar", "week": "Second", "rating": 95},
+                {"date": "09/04/2018", "Month": "Apr", "week": "Second", "rating": 26},
+                {"date": "07/05/2018", "Month": "May", "week": "Second", "rating": 27},
+                {"date": "04/06/2018", "Month": "Jun", "week": "Second", "rating": 18},
+                {"date": "09/07/2018", "Month": "Jul", "week": "Second", "rating": 69},
+                {"date": "06/08/2018", "Month": "Aug","week": "Second", "rating": 70},
+                {"date": "10/09/2018", "Month": "Sept","week": "Second", "rating": 39},
+                {"date": "08/10/2018", "Month": "Oct", "week": "Second", "rating": 70},
+                {"date": "05/10/2018", "Month": "Nov", "week": "Second", "rating": 33},
+                {"date": "10/12/2018", "Month": "Dec", "week": "Second", "rating": 39},
+                {"date": "15/01/2018", "Month": "Jan", "week": "Third",  "rating": 15},
+                {"date": "19/02/2018", "Month": "Feb", "week": "Third", "rating": 100},
+                {"date": "12/03/2018", "Month": "Mar", "week": "Third", "rating": 99},
+                {"date": "16/04/2018", "Month": "Apr", "week": "Third", "rating": 30},
+                {"date": "21/05/2018", "Month": "May", "week": "Third", "rating": 98},
+                {"date": "18/06/2018", "Month": "Jun", "week": "Third", "rating": 60},
+                {"date": "18/07/2018", "Month": "Jul", "week": "Third", "rating": 37},
+                {"date": "16/08/2018", "Month": "Aug","week": "Third", "rating": 75},
+                {"date": "13/09/2018", "Month": "Sept","week": "Third", "rating": 33},
+                {"date": "15/10/2018", "Month": "Oct", "week": "Third", "rating": 54},
+                {"date": "19/11/2018", "Month": "Nov", "week": "Third", "rating": 75},
+                {"date": "17/11/2018", "Month": "Dec", "week": "Third", "rating": 66},
+                {"date": "22/01/2018", "Month": "Jan", "week": "Fourth",  "rating": 60},
+                {"date": "26/02/2018", "Month": "Feb", "week": "Fourth", "rating": 80},
+                {"date": "26/03/2018", "Month": "Mar", "week": "Fourth", "rating": 99},
+                {"date": "23/04/2018", "Month": "Apr", "week": "Fourth", "rating": 63},
+                {"date": "21/05/2018", "Month": "May", "week": "Fourth", "rating": 60},
+                {"date": "25/06/2018", "Month": "Jun", "week": "Fourth", "rating": 47},
+                {"date": "23/07/2018", "Month": "Jul", "week": "Fourth", "rating": 40},
+                {"date": "20/08/2018", "Month": "Aug","week": "Fourth", "rating": 55},
+                {"date": "24/09/2018", "Month": "Sept","week": "Fourth", "rating": 75},
+                {"date": "22/10/2018", "Month": "Oct", "week": "Fourth", "rating": 66},
+                {"date": "26/11/2018", "Month": "Nov", "week": "Fourth", "rating": 97},
+                {"date": "24/12/2018", "Month": "Dec", "week": "Fourth", "rating": 100},
             ];
-            
             
             var ndx = crossfilter(customerReviewData);
             
             var parseDate = d3.time.format("%d/%m/%Y").parse;
+            //var parseRating = 
             customerReviewData.forEach(function(d){
                d.date = parseDate(d.date);
+               d.rating = parseInt(d.rating);
             });
             
             var minDate = ndx.dimension(dc.pluck('date')).bottom(1)[0].date;
             var maxDate = ndx.dimension(dc.pluck('date')).top(1)[0].date;
              
              
-            
-            
-            
-            
-            var Month_dim = ndx.dimension(dc.pluck('Month'));
-            var total_rating_per_Month = Month_dim.group().reduceSum(dc.pluck('rating'));
-            dc.barChart(".customer_feedback_per_month")
-                .width(600)
+            var week_selector_dim = ndx.dimension(dc.pluck('week'));
+            var week_selector_menu = week_selector_dim.group();
+            dc.selectMenu("#week_selector")
+                .dimension(week_selector_dim)
+                .group(week_selector_menu);
+                
+            var Month_selector_dim = ndx.dimension(dc.pluck('Month'));
+            var Month_selector_menu = Month_selector_dim.group();
+                dc.selectMenu("#Month_selector")
+                    .dimension(Month_selector_dim)
+                    .group(Month_selector_menu);
+                    
+            var gross_Month_dim = ndx.dimension(dc.pluck('Month'));
+            var total_rating_per_Month = gross_Month_dim.group().reduceSum(dc.pluck('rating'));
+            dc.barChart("#customer_feedback_per_month")
+                .width(400)
                 .height(300)
                 .margins({top: 20, right: 50, bottom: 40, left: 50})
-                .dimension(Month_dim)   
+                .dimension(gross_Month_dim)   
                 .group(total_rating_per_Month)
                 //.colors(['#3182bd', '#6baed6', '#9ecae1', '#c6dbef', '#dadaeb'])
                 //.colorDomain([-1750, 1644])
                 //.colorAccessor(function(d, i){return d.rating;})
-                .transitionDuration(500)
+                .transitionDuration(1000)
                 .x(d3.scale.ordinal())
                 .xUnits(dc.units.ordinal)
                 .xAxisLabel("Rating Per Month")
@@ -235,77 +184,262 @@
                 .yAxis().ticks(5);
                 
                 
-            var week_dim = ndx.dimension(dc.pluck('week'));
-            var total_rating_per_week = week_dim.group().reduceSum(dc.pluck('rating'));
-            dc.barChart(".customer_feedback_per_week")
-                .width(600)
+                     
+        var average_Month_dim = ndx.dimension(dc.pluck('Month')); 
+        //var average_rating_month = average_rating_dim.group().reduce(adder, remover, initialiser);
+        var average_rating_Month = average_Month_dim.group().reduce(
+            
+           function (p, v){
+               p.count++;
+               p.total += v.rating;
+               p.average = p.total / p.count;
+               return p;
+           },
+           
+           function (p, v){
+               p.count--;
+               if (p.count == 0 ){
+                   p.total = 0;
+                   p.average = 0;
+               }else{
+                   p.total -= v.rating;
+                   p.total = p.total / p.count;
+               }
+               return p;
+           },
+            function(){
+                return { count: 0, total: 0, average: 0};
+            }
+            
+            );
+        var average_total_rating_month = dc.barChart("#average_rating_month");
+        average_total_rating_month
+                    .width(400)
+                    .height(300)
+                    .transitionDuration(1000)
+                    .dimension(average_Month_dim)
+                    .group(average_rating_Month)
+                    .valueAccessor(function (d){
+                        return d.value.average.toFixed(2);
+                    })
+                    .x(d3.scale.ordinal())
+                    .xUnits(dc.units.ordinal);
+                
+                
+            var total_week_dim = ndx.dimension(dc.pluck('week'));
+            var total_rating_per_week = total_week_dim.group().reduceSum(dc.pluck('rating'));
+            dc.barChart("#customer_feedback_per_week")
+                .width(400)
                 .height(300)
                 .margins({top: 20, right: 50, bottom: 40, left: 50})
-                .dimension(week_dim)   
+                .dimension(total_week_dim)   
                 .group(total_rating_per_week)
-                .transitionDuration(500)
+                .transitionDuration(1000)
                 .x(d3.scale.ordinal())
                 .xUnits(dc.units.ordinal)
                 .xAxisLabel("Rating per Week")
                 .yAxis().ticks(5);
                 
+            var average_rating_per_week_chart_dim = ndx.dimension(dc.pluck('week'));
+            var average_rating_per_week = average_rating_per_week_chart_dim.group().reduce(
+            function add_average_rating_per_week(p, v){
+                p.count++;
+                p.total += v.rating;
+                p.average = p.total / p.count;
+                return p;
+            },
+            function remove_average_rating_per_week(p, v){
+                p.count--;
+                if(p.count == 0){
+                    p.total = 0;
+                    p.average = 0;
+                }else{
+                p.total -= v.rating;
+                p.average = p.total / p.count;
+            }
+            return p;
+     },
+            function initialise(){
+                return{count: 0, total: 0, average: 0};
+        },
+            );
+            var aver_rating_per_week = dc.barChart("#average_rating_week");
+             aver_rating_per_week        
+                        .width(400)
+                        .height(300)
+                        .margins({top: 20, right: 50, bottom: 40, left: 50})
+                        .dimension(average_rating_per_week_chart_dim)
+                        .group(average_rating_per_week)
+                       .valueAccessor(function (d){
+                        return d.value.average.toFixed(3);
+                    })
+                        .transitionDuration(1000)
+                        .x(d3.scale.ordinal())
+                        .xUnits(dc.units.ordinal)
+                        .xAxisLabel("Average Rating Per Week")
+                        .yAxis().ticks(5);
+                        
                 
-            var Monthly_dim = ndx.dimension(dc.pluck('Month'));
-            var total_rating_per_Monthly = Monthly_dim.group().reduceSum(dc.pluck('rating'));
-            dc.pieChart(".pie_customers_feedback_per_month")
-                .height(250)
-                .radius(120)
-                .transitionDuration(1500)
-                .dimension(Monthly_dim)
-                .group(total_rating_per_Monthly);
+                
+            var pie_Month_dim = ndx.dimension(dc.pluck('Month'));
+            var total_rating_per_Month = pie_Month_dim.group().reduceSum(dc.pluck('rating'));
+            dc.pieChart("#pie_customers_feedback_per_month")
+                .height(200)
+                .radius(100)
+                .transitionDuration(1000)
+                .dimension(pie_Month_dim)
+                .group(total_rating_per_Month);
+                
+            /**Doughnut**/    
+            var pie_week_dim = ndx.dimension(dc.pluck('week'));
+            var pie_rating_per_week = pie_week_dim.group().reduceSum(dc.pluck('rating'));
+            dc.pieChart("#pie_customer_feedback_per_week")
+                .height(200)
+                .innerRadius(50)
+                .transitionDuration(1000)
+                .dimension(pie_week_dim)
+                .group(pie_rating_per_week);
                 
                 
-            var weekly_dim = ndx.dimension(dc.pluck('week'));
-            var total_rating_per_weekly = weekly_dim.group().reduceSum(dc.pluck('rating'));
-            dc.pieChart(".pie_customer_feedback_per_week")
-                .height(250)
-                .innerRadius(60)
-                .transitionDuration(1500)
-                .dimension(weekly_dim)
-                .group(total_rating_per_weekly);
+                       
+                    //DERIVED DIMENSIONS
+            var pie_derived_dim = ndx.dimension(function (d){
+                if (d.rating >= 70){
+                    return "Excellent";
+                }else if
+                    (d.rating > 50 && d.rating <= 70){
+                        return "Good";
+                    }else if 
+                        (d.rating > 40 && d.rating < 50)
+                        return "Average";
+                    else
+                        return "Poor";
+                }
+            );
+            var pie_derived_group = pie_derived_dim.group();
+            console.log(pie_derived_group.all);
+            dc.pieChart("#derived")
+            .height(200)
+            .radius(100)
+            .dimension(pie_derived_dim)
+            .group(pie_derived_group);
                 
-            
-          
-         
-            var Date_chart_dim = ndx.dimension(dc.pluck('date'));
-            var total_period_rating = Date_chart_dim.group().reduceSum(dc.pluck('rating'));
-            /**var minDate = Date_chart_dim.bottom(1)[0].date;
-            var maxDate = Date_chart_dim.top(1)[0].date;**/
-            dc.barChart(".date_annual_customers_feedback_chart")
-                .width(900)
+            var date_chart_dim = ndx.dimension(dc.pluck('date'));
+            var total_period_rating = date_chart_dim.group().reduceSum(dc.pluck('rating'));
+            dc.barChart("#date_annual_customers_feedback_chart")
+                .width(1000)
                 .height(400)
-                .margins({top: 10, right: 50, bottom: 30, left: 50})
-                .dimension(Date_chart_dim)   
+                .margins({top: 10, right: 50, bottom: 50, left: 50})
+                .dimension(date_chart_dim)   
                 .group(total_period_rating)
-                .transitionDuration(500)
+                .transitionDuration(1000)
                 .x(d3.time.scale().domain([minDate, maxDate]))
                 .xAxisLabel("2018 Annual Rating")
+                .brushOn(false)
                 .yAxis().ticks(5);
-                        
-                        
-            var date_dim = ndx.dimension(dc.pluck('date'));
-            var period_review_per_month = date_dim.group().reduceSum(dc.pluck('rating'));
-            //var minDate = date_dim.bottom(1)[0].date;
-            //var maxDate = date_dim.top(1)[0].date;
+                
+          
+              /**stacked chart**/ 
+                var stacked_Month_dim = ndx.dimension(dc.pluck('Month'));
+                
+                var First_week_stacked = stacked_Month_dim.group().reduceSum(function (d){
+                    if (d.week === 'First'){
+                        return +d.rating;
+                    }else{
+                        return 0;
+                    }
+                });
+                
+                 var Second_week_stacked = stacked_Month_dim.group().reduceSum(function (d){
+                    if (d.week === 'Second'){
+                        return +d.rating;
+                    }else{
+                        return 0;
+                    }
+                });
+                
+                 var Third_week_stacked = stacked_Month_dim.group().reduceSum(function (d){
+                    if (d.week === 'Third'){
+                        return +d.rating;
+                    }else{
+                        return 0;
+                    }
+                });
+                
+                 var Fourth_week_stacked = stacked_Month_dim.group().reduceSum(function (d){
+                    if (d.week === 'Fourth'){
+                        return +d.rating;
+                    }else{
+                        return 0;
+                    }
+                });
+                
+                
+                var week_stackedChart = dc.barChart("#stacked_chart_week")
+                week_stackedChart
+                    .width(500)
+                    .height(300)
+                    .dimension(stacked_Month_dim)
+                    .group(First_week_stacked, "First Wks")
+                    .stack(Second_week_stacked, "Sec Wks")
+                    .stack(Third_week_stacked, "Third Wks")
+                    .stack(Fourth_week_stacked, "Fourth Wks")
+                    .x(d3.scale.ordinal())
+                    .xUnits(dc.units.ordinal)
+                    .legend(dc.legend().x(420).y(0).itemHeight(15).gap(5))
+                    .margins({top: 10, right: 100, bottom: 30, left: 30});
+                    
+                week_stackedChart.margins().right = 100;
+                
+               
+               
+               /**scatter plot**/
+                var scatter_date_dim = ndx.dimension(dc.pluck('date'));
+                var scatter_rating_dim = ndx.dimension(function (d){
+                    return [d.date, d.rating, d.week];
+                });
+               
+                var scatter_rating_group = scatter_rating_dim.group();
+                var weekly_colors = d3.scale.ordinal()
+                            .domain(["First", "Second", "Third", "Fourth"])
+                            .range(["red", "green", "blue", "yellow"]);
+                
+                var scatter_rating_chart = dc.scatterPlot("#scatter-plot");
+                scatter_rating_chart
+                    .width(950)
+                    .height(400)
+                    .x(d3.time.scale().domain([minDate, maxDate]))
+                    .brushOn(false)
+                    .symbolSize(8)
+                    .clipPadding(10)
+                    .yAxisLabel("Rating")
+                    .title(function (d){
+                        return d.key[2] + " week rating equals " +d.key[1] + " on " +d.key[0];
+                    })
+                    .colorAccessor(function (d){
+                        return d.key[2];
+                    })
+                    .colors(weekly_colors)
+                    .dimension(scatter_rating_dim)
+                    .group(scatter_rating_group);
+                    
+                    
+                     /** var line_date_dim = ndx.dimension(dc.pluck('date'));
+            var period_review_per_month = line_date_dim.group().reduceSum(dc.pluck('rating'));
+            var minDate = date_dim.bottom(1)[0].date;
+            var maxDate = date_dim.top(1)[0].date;
             dc.lineChart(".line_annual_customers_feedback")
-                .width(1200)
+                .width(1000)
                 .height(400)
-                .margins({top: 10, right: 50, bottom: 30, left: 50})
-                .dimension(date_dim)   
+                .margins({top: 10, right: 50, bottom: 50, left: 50})
+                .dimension(line_date_dim)   
                 .group(period_review_per_month)
-                .transitionDuration(500)
+                .transitionDuration(5000)
                 .x(d3.time.scale().domain([minDate, maxDate]))
                 .xAxisLabel("Month")
                 .brushOn(false)
                 .yAxis().ticks(5);
-                
-/**********************************************************************************COMPOSITE*******************************************************************/
-         
+            
           var composite_date_dim = ndx.dimension(dc.pluck('date'));
           
           var ratingInJan = composite_date_dim.group().reduceSum(function(d){
@@ -457,11 +591,9 @@
                     .yAxis().ticks(4);
                     
                     
-                    
-                    
-         var composite_week_dim = ndx.dimension(dc.pluck('week'));
+         var composite_week_dim = ndx.dimension(dc.pluck('date'));
          var ratingInfirst = composite_week_dim.group().reduceSum(function(d){
-              if (d.week === 'first'){
+              if (d.week === "first"){
                   return +d.rating;
               }else{
                   return 0;
@@ -469,16 +601,8 @@
           });
           
          
-         var ratingInfirst = composite_week_dim.group().reduceSum(function(d){
-              if (d.week === 'first'){
-                  return +d.rating;
-              }else{
-                  return 0;
-              }
-          });
-          
-           var ratingInsecond = composite_week_dim.group().reduceSum(function(d){
-              if (d.week === 'second'){
+         var ratingInsecond = composite_week_dim.group().reduceSum(function(d){
+              if (d.week === "second"){
                   return +d.rating;
               }else{
                   return 0;
@@ -486,15 +610,17 @@
           });
           
            var ratingInthird = composite_week_dim.group().reduceSum(function(d){
-              if (d.week === 'third'){
+              if (d.week === "third"){
                   return +d.rating;
               }else{
                   return 0;
               }
           });
           
+           
+          
            var ratingInfourth = composite_week_dim.group().reduceSum(function(d){
-              if (d.week === 'fourth'){
+              if (d.week === "fourth"){
                   return +d.rating;
               }else{
                   return 0;
@@ -525,185 +651,7 @@
                         .group(ratingInfourth, 'fourth')
           
           ])
-                .brushOn(false);
-                
-    /**</*****************************************************************************COMPOSITE********************>*****************/
-                
-                var stacked_Month_dim = ndx.dimension(dc.pluck('Month'));
-                
-                var first_week_stacked = stacked_Month_dim.group().reduceSum(function (d){
-                    if (d.week === 'first'){
-                        return +d.rating;
-                    }else{
-                        return 0;
-                    }
-                });
-                
-                 var second_week_stacked = stacked_Month_dim.group().reduceSum(function (d){
-                    if (d.week === 'second'){
-                        return +d.rating;
-                    }else{
-                        return 0;
-                    }
-                });
-                
-                 var third_week_stacked = stacked_Month_dim.group().reduceSum(function (d){
-                    if (d.week === 'third'){
-                        return +d.rating;
-                    }else{
-                        return 0;
-                    }
-                });
-                
-                 var fourth_week_stacked = stacked_Month_dim.group().reduceSum(function (d){
-                    if (d.week === 'fourth'){
-                        return +d.rating;
-                    }else{
-                        return 0;
-                    }
-                });
-                
-                var stackedChart = dc.barChart(".stacked_chart_week")
-                stackedChart
-                    .width(900)
-                    .height(390)
-                    .dimension(stacked_Month_dim)
-                    .group(first_week_stacked, "first")
-                    .stack(second_week_stacked, "second")
-                    .stack(third_week_stacked, "third")
-                    .stack(fourth_week_stacked, "fourth")
-                    .x(d3.scale.ordinal())
-                    .xUnits(dc.units.ordinal)
-                    .legend(dc.legend().x(420).y(0).itemHeight(15).gap(5));
-                    
-                stackedChart.margins().right = 100;
-                
-                
-                
-               
-               
-                var scatter_date_dim = ndx.dimension(dc.pluck('date'));
-                
-                var rating_dim = ndx.dimension(function (d){
-                    return [d.date, d.rating, d.week];
-                });
-               
-                
-                
-                var rating_group = rating_dim.group();
-                var weekly_colors = d3.scale.ordinal()
-                            .domain(["first", "second", "third", "fourth"])
-                            .range(["red", "green", "blue", "yellow"]);
-                
-                var rating_chart = dc.scatterPlot(".scatter-plot");
-                rating_chart
-                    .width(900)
-                    .height(400)
-                    .x(d3.time.scale().domain([minDate, maxDate]))
-                    .brushOn(false)
-                    .symbolSize(8)
-                    .clipPadding(10)
-                    .yAxisLabel("Rating")
-                    .title(function (d){
-                        return d.key[2] + " week rating equals " +d.key[1] + " on " +d.key[0];
-                    })
-                    .colorAccessor(function (d){
-                        return d.key[2];
-                    })
-                    .colors(weekly_colors)
-                    .dimension(rating_dim)
-                    .group(rating_group);
-                    
-            var size_dimension = ndx.dimension(function (d){
-                if (d.rating >= 70){
-                    return "Excellent";
-                }else if
-                    (d.rating > 50 && d.rating <= 70){
-                        return "Good";
-                    }else{
-                        return "Poor";
-                    }
-                }
-            );
-            var size_group = size_dimension.group();
-            console.log(size_group.all);
-            dc.pieChart(".derived")
-            .height(330)
-            .radius(90)
-            .dimension(size_dimension)
-            .group(size_group);
-            
-        var average_rating_dim = ndx.dimension(dc.pluck('Month')); 
-        //var average_rating_month = average_rating_dim.group().reduce(adder, remover, initialiser);
-        var average_rating_month = average_rating_dim.group().reduce(
-            
-           function (p, v){
-               p.count++;
-               p.total += v.rating;
-               p.average = p.total / p.count;
-               return p;
-           },
-           
-           function (p, v){
-               p.count--;
-               if (p.count == 0 ){
-                   p.total = 0;
-                   p.average = 0;
-               }else{
-                   p.total -= v.rating;
-                   p.total = p.total / p.count;
-               }
-               return p;
-           },
-            function(){
-                return { count: 0, total: 0, average: 0};
-            }
-            
-            );
-        var average_total_rating_month = dc.barChart(".average_rating_month");
-        average_total_rating_month
-                    .width(500)
-                    .height(300)
-                    .dimension(average_rating_dim)
-                    .group(average_rating_month)
-                    .valueAccessor(function (d){
-                        return d.value.average;
-                    })
-                    .x(d3.scale.ordinal())
-                    .xUnits(dc.units.ordinal);
-                    
-   // var week_dim = ndx.dimension(dc.pluck('week'));
-   // var total_rating_per_week = week_dim.group().reduceSum(dc.pluck('rating'));                
-                    
-   var date_bubble_dim = ndx.dimension(dc.pluck('date')); 
-   var bubble_Chart = date_bubble_dim.group().reduceSum(dc.pluck('rating'));
-   dc.bubbleChart(".bubble_chart")
-                .width(900)
-                .height(250)
-                //.transition(1000)
-                .margins({top: 10, right: 50, bottom: 30, left: 40})
-                .dimension(bubble_Chart)
-                .group(date_bubble_dim)
-                .colors(["red", "#ccc", "steelblue", "green"])
-                .colorDomain([-1750, 1644])
-                .colorAccessor(function (d,i){return d.rating.absGain;})
-                .keyAccessor(function(p){return p.rating.absGain;})
-                .valueAccessor(function(p){return p.rating.percentageGain;})
-                .radiusValueAccessor(function(p) { return p.rating.fluctuationPercentage;})
-                .x(d3.scale.linear().domain([-2500, 2500]))
-                .y(d3.scale.linear().domain([-100, 100]))
-               // .r(d3.scale.linear.domain([0, 4000]))
-                //.renderLabel(true)
-                //.label(function(p){ return p.key.getFullYear();})
-                //.renderTitle(true);
-                
-                
-                
-                
-   
-                
-                
-                
+                .brushOn(false);**/
 
 dc.renderAll();
                     
