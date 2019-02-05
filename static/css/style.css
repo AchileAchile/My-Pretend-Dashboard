@@ -5,7 +5,7 @@ html {
     overflow-x: hidden;
 }
 body {
-   background-color: /* #505359*/ #000;
+   background-color: #505359;
    min-height: 100%;
    position: relative;
    margin: 0;
@@ -100,6 +100,11 @@ li {
      color: white;
 }
 
+@media only screen and (max-width: 600px){
+   #customer_feedback_per_week > svg{
+        width:"300px";
+    }
+}
 
 
 

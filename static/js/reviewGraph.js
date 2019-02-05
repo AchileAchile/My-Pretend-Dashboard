@@ -1,11 +1,23 @@
 queue()
     .defer(d3.json, "data/review.json")
     .await(pretendGraph);
+    var minDate, maxDate;
     
 function pretendGraph(error, reviewData){
-    var ndx = crossfilter(reviewData);
     
-    week_distribution_selector(ndx);
+    
+    var ndx = crossfilter(reviewData);
+    var parseDate = d3.time.format("%d/%m/%Y").parse;
+            //var parseRating = 
+            reviewData.forEach(function(d){
+               d.date = parseDate(d.date);
+               d.rating = parseInt(d.rating);
+            });
+            
+            minDate = ndx.dimension(dc.pluck('date')).bottom(1)[0].date;
+            maxDate = ndx.dimension(dc.pluck('date')).top(1)[0].date;
+    
+   week_distribution_selector(ndx);
     Month_distribution_selector(ndx);
     stacked_chart(ndx);
     feedback_week(ndx);
@@ -21,7 +33,12 @@ function pretendGraph(error, reviewData){
     composite_week_graph(ndx);
     composite_Month_graph(ndx);
     
+    
+    
+    
+    
 dc.renderAll();
+
 }
 
 function week_distribution_selector(ndx){
