@@ -6,8 +6,6 @@
 
 ACKNOWLEDGEMENT
 
-A PEN BY Brandon Himpfen
-https://codepen.io/brandonhimpfen/pen/BoExzV
+https://www.w3schools.com/colors/colors_picker.asp
 
-mike bostock block builder
-https://blockbuilder.org/search?text=bar+chart&d3version=v4&user=mbostock
+https://htmlcolorcodes.com/color-chart/
