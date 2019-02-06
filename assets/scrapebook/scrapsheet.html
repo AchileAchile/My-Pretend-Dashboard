@@ -641,94 +641,13 @@ dc.renderAll();
                     
                     
                     
-                      /**function feedback_week(ndx){
-            var total_week_dim = ndx.dimension(dc.pluck('week'));
-            var total_rating_per_week = total_week_dim.group().reduceSum(dc.pluck('rating'));
-            dc.barChart("#customer_feedback_per_week")
-                .width(width)
-                .height(250)
-                .margins({top: 20, right: 50, bottom: 40, left: 50})
-                .dimension(total_week_dim)   
-                .group(total_rating_per_week)
-                .transitionDuration(1000)
-                .x(d3.scale.ordinal())
-                .xUnits(dc.units.ordinal)
-                .xAxisLabel("Rating per Week")
-                .yAxis().ticks(5);
-                
-        window.onresize = function(event){
-            var newWidth = document.getElementById('customer_feedback_per_week').offsetWidth;
-            total_rating_per_week.width(newWidth);
-    };
-}
-    function feedback_Month(ndx){
-            var gross_Month_dim = ndx.dimension(dc.pluck('Month'));
-            var total_rating_per_Month = gross_Month_dim.group().reduceSum(dc.pluck('rating'));
-            dc.barChart("#customer_feedback_per_month")
-                .width(width)
-                .height(250)
-                .margins({top: 20, right: 50, bottom: 40, left: 50})
-                .dimension(gross_Month_dim)   
-                .group(total_rating_per_Month)
-                .transitionDuration(1000)
-                .x(d3.scale.ordinal())
-                .xUnits(dc.units.ordinal)
-                .xAxisLabel("Rating Per Month")
-                .elasticY(true)
-                .yAxisPadding(2)
-                .yAxis().ticks(5);
-                
-        window.onresize = function(event){
-            var newWidth = document.getElementById('customer_feedback_per_month').offsetWidth;
-             total_rating_per_Month.width(newWidth);
-    };
-                
-}
-    function average_rating_week(ndx){
-        var average_rating_per_week_chart_dim = ndx.dimension(dc.pluck('week'));
-            var average_rating_per_week = average_rating_per_week_chart_dim.group().reduce(
-            function add_average_rating_per_week(p, v){
-                p.count++;
-                p.total += v.rating;
-                p.average = p.total / p.count;
-                return p;
-            },
-            function remove_average_rating_per_week(p, v){
-                p.count--;
-                if(p.count == 0){
-                    p.total = 0;
-                    p.average = 0;
-                }else{
-                p.total -= v.rating;
-                p.average = p.total / p.count;
-            }
-            return p;
-     },
-            function initialise(){
-                return{count: 0, total: 0, average: 0};
-    },
-        );
-        var aver_rating_per_week = dc.barChart("#average_rating_week");
-        aver_rating_per_week        
-                .width(width)
-                .height(250)
-                .margins({top: 20, right: 50, bottom: 40, left: 50})
-                .dimension(average_rating_per_week_chart_dim)
-                .group(average_rating_per_week)
-                .valueAccessor(function (d){
-                    return d.value.average.toFixed(3);
-                })
-                    .transitionDuration(1000)
-                    .x(d3.scale.ordinal())
-                    .xUnits(dc.units.ordinal)
-                    .xAxisLabel("Average Rating Per Week")
-                    .yAxis().ticks(5);
-                    
-                 window.onresize = function(event){
-                     var newWidth = document.getElementById('average_rating_week').offsetWidth;
-                    aver_rating_per_week.width(newWidth);
-    };
-    }
+       
+
+
+
+ 
+
+
     
     function  average_average_Month(ndx){
          var average_Month_dim = ndx.dimension(dc.pluck('Month')); 
