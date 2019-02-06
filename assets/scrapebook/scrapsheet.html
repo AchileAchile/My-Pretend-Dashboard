@@ -623,5 +623,524 @@ dc.renderAll();
                     how to move the text to the middle
                     **/  
                     
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                      /**function feedback_week(ndx){
+            var total_week_dim = ndx.dimension(dc.pluck('week'));
+            var total_rating_per_week = total_week_dim.group().reduceSum(dc.pluck('rating'));
+            dc.barChart("#customer_feedback_per_week")
+                .width(width)
+                .height(250)
+                .margins({top: 20, right: 50, bottom: 40, left: 50})
+                .dimension(total_week_dim)   
+                .group(total_rating_per_week)
+                .transitionDuration(1000)
+                .x(d3.scale.ordinal())
+                .xUnits(dc.units.ordinal)
+                .xAxisLabel("Rating per Week")
+                .yAxis().ticks(5);
+                
+        window.onresize = function(event){
+            var newWidth = document.getElementById('customer_feedback_per_week').offsetWidth;
+            total_rating_per_week.width(newWidth);
+    };
+}
+    function feedback_Month(ndx){
+            var gross_Month_dim = ndx.dimension(dc.pluck('Month'));
+            var total_rating_per_Month = gross_Month_dim.group().reduceSum(dc.pluck('rating'));
+            dc.barChart("#customer_feedback_per_month")
+                .width(width)
+                .height(250)
+                .margins({top: 20, right: 50, bottom: 40, left: 50})
+                .dimension(gross_Month_dim)   
+                .group(total_rating_per_Month)
+                .transitionDuration(1000)
+                .x(d3.scale.ordinal())
+                .xUnits(dc.units.ordinal)
+                .xAxisLabel("Rating Per Month")
+                .elasticY(true)
+                .yAxisPadding(2)
+                .yAxis().ticks(5);
+                
+        window.onresize = function(event){
+            var newWidth = document.getElementById('customer_feedback_per_month').offsetWidth;
+             total_rating_per_Month.width(newWidth);
+    };
+                
+}
+    function average_rating_week(ndx){
+        var average_rating_per_week_chart_dim = ndx.dimension(dc.pluck('week'));
+            var average_rating_per_week = average_rating_per_week_chart_dim.group().reduce(
+            function add_average_rating_per_week(p, v){
+                p.count++;
+                p.total += v.rating;
+                p.average = p.total / p.count;
+                return p;
+            },
+            function remove_average_rating_per_week(p, v){
+                p.count--;
+                if(p.count == 0){
+                    p.total = 0;
+                    p.average = 0;
+                }else{
+                p.total -= v.rating;
+                p.average = p.total / p.count;
+            }
+            return p;
+     },
+            function initialise(){
+                return{count: 0, total: 0, average: 0};
+    },
+        );
+        var aver_rating_per_week = dc.barChart("#average_rating_week");
+        aver_rating_per_week        
+                .width(width)
+                .height(250)
+                .margins({top: 20, right: 50, bottom: 40, left: 50})
+                .dimension(average_rating_per_week_chart_dim)
+                .group(average_rating_per_week)
+                .valueAccessor(function (d){
+                    return d.value.average.toFixed(3);
+                })
+                    .transitionDuration(1000)
+                    .x(d3.scale.ordinal())
+                    .xUnits(dc.units.ordinal)
+                    .xAxisLabel("Average Rating Per Week")
+                    .yAxis().ticks(5);
+                    
+                 window.onresize = function(event){
+                     var newWidth = document.getElementById('average_rating_week').offsetWidth;
+                    aver_rating_per_week.width(newWidth);
+    };
+    }
+    
+    function  average_average_Month(ndx){
+         var average_Month_dim = ndx.dimension(dc.pluck('Month')); 
+         var average_rating_Month = average_Month_dim.group().reduce(
+            
+           function (p, v){
+               p.count++;
+               p.total += v.rating;
+               p.average = p.total / p.count;
+               return p;
+           },
+           
+           function (p, v){
+               p.count--;
+               if (p.count == 0 ){
+                   p.total = 0;
+                   p.average = 0;
+               }else{
+                   p.total -= v.rating;
+                   p.average = p.total / p.count;
+               }
+               return p;
+           },
+            function(){
+                return { count: 0, total: 0, average: 0};
+            }
+            
+            );
+        var average_total_rating_month = dc.barChart("#average_rating_month");
+        average_total_rating_month
+                .width(width)
+                .height(250)
+                .transitionDuration(1000)
+                .dimension(average_Month_dim)
+                .group(average_rating_Month)
+                .valueAccessor(function (d){
+                    return d.value.average.toFixed(2);
+                })
+                .x(d3.scale.ordinal())
+                .xUnits(dc.units.ordinal);
+                
+        window.onresize = function(event){
+            var newWidth = document.getElementById('average_rating_month').offsetWidth;
+            average_total_rating_month.width(newWidth);
+    };
+    }
+    doughn
+    function pie_week(ndx){
+         var pie_week_dim = ndx.dimension(dc.pluck('week'));
+         var pie_rating_per_week = pie_week_dim.group().reduceSum(dc.pluck('rating'));
+         dc.pieChart("#pie_customer_feedback_per_week")
+            .height(200)
+            .innerRadius(50)
+            .transitionDuration(1000)
+            .dimension(pie_week_dim)
+            .group(pie_rating_per_week);
+            
+        
+    }
+    
+    function pie_Month(ndx){
+         var pie_Month_dim = ndx.dimension(dc.pluck('Month'));
+         var total_rating_per_Month = pie_Month_dim.group().reduceSum(dc.pluck('rating'));
+         dc.pieChart("#pie_customers_feedback_per_month")
+            .height(200)
+            .radius(100)
+            .transitionDuration(1000)
+            .dimension(pie_Month_dim)
+            .group(total_rating_per_Month);
+        }
+    function pie_derived(ndx){
+        var pie_derived_dim = ndx.dimension(function (d){
+                if (d.rating >= 70){
+                    return "Excellent";
+                }else if
+                    (d.rating > 50 && d.rating <= 70){
+                        return "Good";
+                    }else if 
+                        (d.rating > 40 && d.rating < 50)
+                        return "Average";
+                    else
+                        return "Poor";
+                }
+            );
+            var pie_derived_group = pie_derived_dim.group();
+            console.log(pie_derived_group.all);
+            dc.pieChart("#derived")
+            .height(200)
+            .radius(100)
+            .dimension(pie_derived_dim)
+            .group(pie_derived_group);
+    }
+    function scatter_plot(ndx){
+        var scatter_date_dim = ndx.dimension(dc.pluck('date'));
+        var scatter_rating_dim = ndx.dimension(function (d){
+            return [d.date, d.rating, d.week];
+        });
+        var scatter_rating_group = scatter_rating_dim.group();
+        var weekly_colors = d3.scale.ordinal()
+                .domain(["First", "Second", "Third", "Fourth"])
+                .range(["blue", "yellow", "green", "red"]);
+                
+        var scatter_rating_chart = dc.scatterPlot("#scatter-plot");
+        scatter_rating_chart
+            .width(width)
+            .height(400)
+            .x(d3.time.scale().domain([minDate, maxDate]))
+            .brushOn(false)
+            .symbolSize(8)
+            .clipPadding(10)
+            .yAxisLabel("Rating")
+            .title(function (d){
+                return d.key[2] + " week rating equals " +d.key[1] + " on " +d.key[0];
+            })
+            .colorAccessor(function (d){
+                return d.key[2];
+            })
+            .colors(weekly_colors)
+            .dimension(scatter_rating_dim)
+            .group(scatter_rating_group);
+            
+                     
+        window.onresize = function(event){
+            var newWidth = document.getElementById('scatter-plot').offsetWidth;
+            scatter_rating_chart.width(newWidth);
+    };
+    }
+    function date_feedback_chart(ndx){
+        var date_chart_dim = ndx.dimension(dc.pluck('date'));
+        var total_period_rating = date_chart_dim.group().reduceSum(dc.pluck('rating'));
+        dc.barChart("#date_annual_customers_feedback_chart")
+            .width(780)
+            .height(400)
+            .margins({top: 10, right: 50, bottom: 50, left: 50})
+            .dimension(date_chart_dim)   
+            .group(total_period_rating)
+            .transitionDuration(1000)
+            .x(d3.time.scale().domain([minDate, maxDate]))
+            .xAxisLabel("2018 Annual Rating")
+            .brushOn(false)
+            .yAxis().ticks(5);
+            
+                     
+        window.onresize = function(event){
+            var newWidth = document.getElementById('date_annual_customers_feedback_chart').offsetWidth;
+            total_period_rating.width(newWidth);
+    };
+    }
+    function line_feedback_graph(ndx){
+        var line_date_dim = ndx.dimension(dc.pluck('date'));
+        var period_review_per_month = line_date_dim.group().reduceSum(dc.pluck('rating'));
+            dc.lineChart("#line_annual_customers_feedback")
+                .width(width)
+                .height(400)
+                .margins({top: 10, right: 50, bottom: 50, left: 50})
+                .dimension(line_date_dim)   
+                .group(period_review_per_month)
+                .transitionDuration(1000)
+                .x(d3.time.scale().domain([minDate, maxDate]))
+                .xAxisLabel("Month")
+                .brushOn(false)
+                .yAxis().ticks(5);
+                
+                         
+        window.onresize = function(event){
+            var newWidth = document.getElementById('line_annual_customers_feedback').offsetWidth;
+            period_review_per_month.width(newWidth);
+    };
+    }
+    function composite_week_graph(ndx){
+        var line_date_dim = ndx.dimension(dc.pluck('date'));
+        var period_review_per_month = line_date_dim.group().reduceSum(dc.pluck('rating'));
+            dc.lineChart("#line_annual_customers_feedback")
+                .width(width)
+                .height(400)
+                .margins({top: 10, right: 50, bottom: 50, left: 50})
+                .dimension(line_date_dim)   
+                .group(period_review_per_month)
+                .transitionDuration(1000)
+                .x(d3.time.scale().domain([minDate, maxDate]))
+                .xAxisLabel("Month")
+                .brushOn(false)
+                .yAxis().ticks(5);
+                
+            window.onresize = function(event){
+                var newWidth = document.getElementById('line_annual_customers_feedback').offsetWidth;
+                period_review_per_month.width(newWidth);
+            
+          var composite_date_dim = ndx.dimension(dc.pluck('date'));
+          
+          var ratingInJan = composite_date_dim.group().reduceSum(function(d){
+              if (d.Month === 'Jan'){
+                  return +d.rating;
+              }else{
+                  return 0;
+              }
+          });
+          
+          var ratingInFeb = composite_date_dim.group().reduceSum(function(d){
+              if (d.Month === "Feb"){
+                  return +d.rating;
+              }else{
+                  return 0;
+              }
+          });
+          
+          var ratingInMar = composite_date_dim.group().reduceSum(function(d){
+              if (d.Month === "Mar"){
+                  return +d.rating;
+              }else{
+                  return 0;
+              }
+          });
+          
+          var ratingInApr = composite_date_dim.group().reduceSum(function(d){
+              if (d.Month === "Apr"){
+                  return +d.rating;
+              }else{
+                  return 0;
+              }
+          });
+          
+          var ratingInMay = composite_date_dim.group().reduceSum(function(d){
+              if (d.Month === "May"){
+                  return +d.rating;
+              }else{
+                  return 0;
+              }
+          });
+          
+          var ratingInJun = composite_date_dim.group().reduceSum(function(d){
+              if (d.Month === "Jun"){
+                  return +d.rating;
+              }else{
+                  return 0;
+              }
+          });
+          
+          var ratingInJul = composite_date_dim.group().reduceSum(function(d){
+              if (d.Month === "Jul"){
+                  return +d.rating;
+              }else{
+                  return 0;
+              }
+          });
+          
+          var ratingInAug = composite_date_dim.group().reduceSum(function(d){
+              if (d.Month === "Aug"){
+                  return +d.rating;
+              }else{
+                  return 0;
+              }
+          });
+          
+          var ratingInSept = composite_date_dim.group().reduceSum(function(d){
+              if (d.Month === "Sept"){
+                  return +d.rating;
+              }else{
+                  return 0;
+              }
+          });
+          
+          var ratingInOct = composite_date_dim.group().reduceSum(function(d){
+              if (d.Month === "Oct"){
+                  return +d.rating;
+              }else{
+                  return 0;
+              }
+          });
+          
+          var ratingInNov = composite_date_dim.group().reduceSum(function(d){
+              if (d.Month === "Nov"){
+                  return +d.rating;
+              }else{
+                  return 0;
+              }
+          });
+          
+          var ratingInDec = composite_date_dim.group().reduceSum(function(d){
+              if (d.Month === "Dec"){
+                  return +d.rating;
+              }else{
+                  return 0;
+              }
+          });
+          
+          
+          var compositeChart = dc.compositeChart('#composite-month');
+          compositeChart
+                .width(width)
+                .height(400)
+                .dimension(composite_date_dim)
+                .x(d3.time.scale().domain([minDate, maxDate]))
+                .yAxisLabel("Rating")
+                .legend(dc.legend().x(80).y(20).itemHeight(13).gap(5))
+                .renderHorizontalGridLines(true)
+                .compose([
+                dc.lineChart(compositeChart)
+                    .colors('green')
+                    .group(ratingInJan, 'Jan'),
+                dc.lineChart(compositeChart)
+                    .colors('gold')
+                    .group(ratingInFeb, 'Feb'),
+                dc.lineChart(compositeChart)
+                    .colors('red')
+                    .group(ratingInMar, 'Mar'),
+                dc.lineChart(compositeChart)
+                    .colors('orange')
+                    .group(ratingInApr, 'Apr'),
+                dc.lineChart(compositeChart)
+                    .colors('white')
+                    .group(ratingInMay, 'May'),
+                dc.lineChart(compositeChart)
+                    .colors('yellow')
+                    .group(ratingInJun, 'Jun'),
+                dc.lineChart(compositeChart)
+                    .colors('black')
+                    .group(ratingInJul, 'Jul'),
+                dc.lineChart(compositeChart)
+                    .colors('blue')
+                    .group(ratingInAug, 'Aug'),
+                dc.lineChart(compositeChart)
+                    .colors('pink')
+                    .group(ratingInSept, 'Sept'),
+                dc.lineChart(compositeChart)
+                    .colors('purple')
+                    .group(ratingInOct, 'Oct'),
+                dc.lineChart(compositeChart)
+                    .colors('tan')
+                    .group(ratingInNov, 'Nov'),
+                dc.lineChart(compositeChart)
+                    .colors('grey')
+                    .group(ratingInDec, 'Dec')
+                    ])
+                    
+                    .brushOn(false)
+                    .yAxis().ticks(4);
+                    
+            window.onresize = function(event){
+                var newWidth = document.getElementById('composite-month').offsetWidth;
+                compositeChart.width(newWidth);
+    }
+    function composite_Month_graph(ndx){
+         var composite_week_dim = ndx.dimension(dc.pluck('date'));
+         var ratingInFirst = composite_week_dim.group().reduceSum(function(d){
+              if (d.week === "First"){
+                  return +d.rating;
+              }else{
+                  return 0;
+              }
+          });
+          
+         
+         var ratingInSecond = composite_week_dim.group().reduceSum(function(d){
+              if (d.week === "Second"){
+                  return +d.rating;
+              }else{
+                  return 0;
+              }
+          });
+          
+           var ratingInThird = composite_week_dim.group().reduceSum(function(d){
+              if (d.week === "Third"){
+                  return +d.rating;
+              }else{
+                  return 0;
+              }
+          });
+          
+           var ratingInFourth = composite_week_dim.group().reduceSum(function(d){
+              if (d.week === "Fourth"){
+                  return +d.rating;
+              }else{
+                  return 0;
+              }
+          });
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          var compositeChart = dc.compositeChart('#composite-chart');
+          compositeChart
+                .width(width)
+                .height(400)
+                .dimension(composite_week_dim)
+                .x(d3.time.scale().domain([minDate, maxDate]))
+                .yAxisLabel("Rating")
+                .legend(dc.legend().x(80).y(20).itemHeight(13).gap(5))
+                .renderHorizontalGridLines(true)
+                .compose([
+                    dc.lineChart(compositeChart)
+                        .colors('blue')
+                        .group(ratingInFirst, 'First'),
+                    dc.lineChart(compositeChart)
+                        .colors('yellow')
+                        .group(ratingInSecond, 'Second'),
+                    dc.lineChart(compositeChart)
+                        .colors('green')
+                        .group(ratingInThird, 'Third'),
+                    dc.lineChart(compositeChart)
+                        .colors('red')
+                        .group(ratingInFourth, 'Fourth')
+          
+          ])
+                         .brushOn(false);
+                         
+    }
+                    
           </script>-->          
                     

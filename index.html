@@ -15,7 +15,7 @@
     <script type="text/javascript" src="static/js/crossfilter.min.js"></script>
     <script type="text/javascript" src="static/js/dc.min.js"></script>
     <script type="text/javascript" src="static/js/queue.min.js"></script>
-    <script type="text/javascript" src="static/js/reviewGraph.js"></script>
+   
     
     <link rel="stylesheet" href="static/css/style.css" type="text/css" />
 </head>
@@ -31,6 +31,7 @@
             </div>
 
         </nav>
+    
         <div class="container">
             <div class="row ">
                 <div id="percentage_rating_per_week_distribution"></div>
@@ -38,7 +39,7 @@
                 <div class="col-md-offset-3 col-xs-4 col-md-6 m-1" id="Month_selector"><span style="color: #f4a4a4; font-size: 1.2em;">Week distribution Selector:<i style="color: red">'Month(s) category'</i>in 2018</span> </div>
             </div>
             <div class="row">
-                <div class="col-xs-12 col-md-6 col-lg-6 m-1" id="stacked_chart_week" style="background-image:linear-gradient(to right, #FFD700, #FF8C00); border-radius: 10%; opacity: 0.8;"><span style="color: white;">Customer <i style="color: red;">'rating'</i> per <i style="color: red;">'week distribution'</i> per <i style="color: red;">'Month'</i></span></div>
+                <div class="col-xs-12 col-md-6 col-lg-6" id="stacked_chart_week" style="background-image:linear-gradient(to right, #FFD700, #FF8C00); border-radius: 10%; opacity: 0.8;"><span style="color: white;">Customer <i style="color: red;">'rating'</i> per <i style="color: red;">'week distribution'</i> per <i style="color: red;">'Month'</i></span></div>
                 <div class="col-xs-12 col-md-6 col-lg-5 m-1" id="customer_feedback_per_week" style="background-image: linear-gradient(to right, #FF00FF, #4B0082); border-radius: 10%; opacity: 0.8;"><span style="color: white;">Gross Customer <i style="color: red;">'rating'</i> per <i style="color: red;">'week distribution'</i></span></div>
             </div>
 
@@ -46,12 +47,12 @@
                 <div class="col-md-6 col-lg-4 m-1" id="customer_feedback_per_month" style="background-image: linear-gradient(to right, #ccff33, #4d6600); border-radius: 10%; opacity: 0.8;"><span style="color: white;">Gross Customer <i style="color: red;">'rating'</i> per <i style="color: red;">'Month'</i></span></div>
                 <div class="col-md-6 col-lg-3 m-1" id="average_rating_week" style="background-image: linear-gradient(to right, #F5B7B1, #641E16  ); border-radius: 10%; opacity: 0.8;"><span style="color: white;">Average Customer <i style="color: red;">'rating'</i> per <i style="color: red;">'week distribution'</i></span></div>
                 <div class="col-md-6 col-lg-4 m-1" id="average_rating_month" style="background-image: linear-gradient(to right,  #ffbb33, #996600); border-radius: 10%; opacity: 0.8;"><span style="color: white;">Average Customer <i style=" color: red;">'rating'</i> per <i style="color: red;">'Month'</i></span> </div>
-            </div><br><br>
+            </div>
             <div class="row">
                 <div class="col-md-6 col-lg-4 m-1" id="pie_customer_feedback_per_week"><span style="color: white">Customer <i style="color:red;">'rating'</i> per <i style="color: red;">'week distribution'</i></span></div>
                 <div class="col-md-6 col-lg-3 m-1" id="pie_customers_feedback_per_month"><span style="color: white;">Customer <i style="color: red;">'rating'</i> per <i style="color: red;">'Month'</i></span></div>
                 <div class="col-md-6 col-lg-4 m-1" id="derived"><span style="color: white;">Derived Dimensions</span></div>
-            </div><br>
+            </div>
             <div class="row">
                 <div class="col-xs-12 col-md-6" id="scatter-plot"><span style="color: white;">Scatter Plot showing Customer <i style="color: red">'rating'</i> at a glance</span></div>
             </div>
@@ -64,8 +65,10 @@
             <div class="row">
                 <div class="col-xs-12 col-md-6" id="composite-chart"><span style="color: white;">Weekly customer <i style="color: red;">'rating'</i></span></div>
             </div>
-            <div class="col-xs-12 col-md-6" id="composite-month"><span style="color: white" ;>Monthly customer <i style="color:red;">'rating'</i></div></span>
-            </div>
+            <div class="col-xs-12 col-md-6" id="composite-month"><span style="color: white" ;>Monthly customer <i style="color:red;">'rating'</i></span></div>
+        </div>
+    
     </section>
+     <script type="text/javascript" src="static/js/reviewGraph.js"></script>
 </body>
 </html>
