@@ -1,5 +1,6 @@
-# [Pretend Dashboard]()
-## purpose:
+# [Pretend Dashboard]( https://achileachile.github.io/Pretend-Dashboard/)
+
+## Purpose:
 <i>"Pretend Dashboard"</i> is a project work developed in partial fulfilment for the requirements of
 the Interactive Frontend Development by the Code Institute, Ireland.
 
