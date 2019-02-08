@@ -101,19 +101,19 @@ function stacked_chart(ndx){
             .width(width_stacked_week)
             .height(250)
             .dimension(stacked_Month_dim)
-            .group(First_week_stacked, "First Wks")
-            .stack(Second_week_stacked, "Sec Wks")
-            .stack(Third_week_stacked, "Third Wks")
-            .stack(Fourth_week_stacked, "Fourth Wks")
+            .group(First_week_stacked, "1st wks")
+            .stack(Second_week_stacked, "2nd wks")
+            .stack(Third_week_stacked, "3rd wks")
+            .stack(Fourth_week_stacked, "4th wks")
             .x(d3.scale.ordinal())
             .xUnits(dc.units.ordinal)
-            .legend(dc.legend().x(420).y(0).itemHeight(15).gap(5))
-            .margins({top: 10, right: 100, bottom: 30, left: 30});
+            .legend(dc.legend().x(200).y(0).itemHeight(10).gap(5))
+            .margins({top: 10, right: 50, bottom: 30, left: 50});
     week_stackedChart.margins().right = 100;
 
     window.Onresize = function(event){
         var newWidth = document.getElementById('#stacked_chart_week').offsetWidth;
-        week_stackedChart.width(newWidth);
+        newWidth.width(width_stacked_week);
     };
 }
 
@@ -136,7 +136,7 @@ function stacked_chart(ndx){
                 .yAxis().ticks(5);
         window.Onresize = function(event){
             var newWidth = document.getElementById('#customer_feedback_per_week').offsetWidth;
-            week_chart.width(newWidth);
+            newWidth.width(width_feedback_week);
     };
 }
 
@@ -559,7 +559,7 @@ function  composite_week_graph(ndx){
                 .dimension(composite_date_dim)
                 .x(d3.time.scale().domain([minDate, maxDate]))
                 .yAxisLabel("Rating")
-                .legend(dc.legend().x(80).y(20).itemHeight(13).gap(5))
+                .legend(dc.legend().x(80).y(20).itemHeight(10).gap(5))
                 .renderHorizontalGridLines(true)
                 .compose([
                 dc.lineChart(compositeChart_Month)
