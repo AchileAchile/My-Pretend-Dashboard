@@ -64,8 +64,11 @@ The tehnologies used for the design of this app are:
 
 ## Testing
 ####    Firefox Simulation
-    <img src="assets/READmages/desktop.png">
-    ![](/assets/READmages/desktop.png)
+    <img src="/assets/READmages/desktop.png">
+    
+![responsive](/img/test_img/desktop.png)
+                
+    
 
 
 ## Deployment
