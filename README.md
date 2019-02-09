@@ -52,7 +52,7 @@ The tehnologies used for the design of this app are:
     +   https://www.json.org/
         +   It provides the format for to store, retrieve and parse data in review.json
 10.  Cloud9
-    +    https://c9.io/ufedo
+    +   https://c9.io/ufedo
         +   It provides the IDE for the development of this project
 
 ## Additional Technologies Required to Use app:
@@ -64,16 +64,19 @@ The tehnologies used for the design of this app are:
 
 ## Testing
 ####    Firefox Simulation
-    <img src="/assets/READmages/desktop.png">
-    
-![responsive](Readmages/test_img/desktop.png)
+![responsive](Readmages/test_img/desktop.png "Firefox responsive snapshot")
                 
     
 
 
 ## Deployment
 ## Credits
+
+
 ## Acknowledgements
+https://stackoverflow.com/questions/37937984/git-refusing-to-merge-unrelated-histories-on-rebase
+https://stackoverflow.com/questions/16862933/how-to-resolve-gits-not-something-we-can-merge-error
+https://help.github.com/articles/dealing-with-non-fast-forward-errors/
    
 
 
