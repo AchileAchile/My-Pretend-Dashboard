@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700|Exo:100,200,300,400,500,600,700');
+
 html {
     height: 100%;
     margin: 0;
@@ -7,117 +9,68 @@ html {
 body {
    background-color: #505359;
    min-height: 100%;
-   position: relative;
    margin: 0;
    padding: 0;
-   
-}
- 
-   /**body{
-      
-       
-        background: url("img/frontend.jpg") no-repeat center center fixed;
-        background-size: cover;
-        -webkit-background-size: cover;
-        -ms-background-size: cover;
-        -o-background-size: cover;
-        z-index: -1;
-   
-}**/
-section{
-    margin: 0;
+   font-family: Roboto, sans-serif;
+   font-weight: 300;
 }
 
-h1 {
-    position: relative;
-    margin-top: 10%;
-    margin-left: 35%;
-    color: #f2f2f4;
-}
-h1:hover {
-    color: #e86410;
+i {
+    color: red;
 }
 
-/**#customers-feedback {
-    padding: 20px;
-}**/
-
-/****************************************MENU*********************************/
-#nav {
-    position: relative;
-    margin-left: 32%;
+span {
+    color: #ffffff;
 }
 
-li {
-    font-size: 2em;
-    list-style: none;
-    text-decoration: none;
+#week_selector>span{
+    color: #f4a4a4;
+    font-size: 1.2em;
 }
-#nav > li > a {
-    color: #000;
-    text-decoration: none;
-    background-color: #e86410;
-    border-radius: 5px;
-    transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -webkit-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
+#stacked_chart_week {
+    background-image: -webkit-linear-gradient(left, #FFD700, #FF8C00);
+    background-image: -moz-linear-gradient(left, #FFD700, #FF8C00);
+    background-image: -o-linear-gradient(left,#FFD700, #FF8C00);
+    background-image:linear-gradient(to right, #FFD700, #FF8C00);
+    border-radius: 10%;
+    opacity: 0.8;
 }
 
-#nav > li > a:hover {
-    color: #fff;
-    transition: all 0.35s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -webkit-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
+#customer_feedback_per_week {
+    background-image: -webkit-linear-gradient(left, #FF00FF, #4B0082);
+    background-image: -moz-linear-gradient(left, #FF00FF, #4B0082);
+    background-image: -o-linear-gradient(left, #FF00FF, #4B0082);
+    background-image:linear-gradient(to left, #FF00FF, #4B0082);
+    border-radius: 10%;
+    opacity: 0.8;
 }
 
-/***************************FOOTER*******************************************/
-.footer {
-    height: 100px;
-    position: absolute;
-    width: 100vw;
-    left: 0px;
-    bottom: 0px;
-    background-color: #000;
-    display: block;
-
-}
-.social-links > li > a > i:hover {
-    color: /**#e86410;**/ black;
+#customer_feedback_per_month{
+    background-image: -webkit-linear-gradient(left, #ccff33, #4d6600);
+    background-image: -moz-linear-gradient(left, #ccff33, #4d6600);
+    background-image: -o-linear-gradient(left, #ccff33, #4d6600);
+    background-image: linear-gradient(to left, #ccff33, #4d6600);
+    border-radius: 10%;
+    opacity: 0.8;
 }
 
-.footer > ul {
-    margin-left: 80%;
+#average_rating_week {
+    background-image: -webkit-linear-gradient(to left, #F5B7B1, #641E16);
+    background-image: -moz-linear-gradient(left, #F5B7B1, #641E16);
+    background-image: -o-linear-gradient(left, #F5B7B1, #641E16);
+    background-image: linear-gradient(to left, #F5B7B1, #641E16);
+    border-radius: 10%;
+    opacity: 0.8;
 }
 
-.social-links > li > a > i{
-     background-color: red;
-     padding: 2px;
-     text-align: center;
-     width: 40px;
-     border-radius: 50%;
-     color: white;
+#average_rating_month {
+    background-image: -webkit-linear-gradient(to left, #ffbb33, #996600);
+    background-image: -moz-linear-gradient(left, #ffbb33, #996600);
+    background-image: -o-linear-gradient(left, #ffbb33, #996600);
+    background-image: linear-gradient(to left, #ffbb33, #996600);
+    border-radius: 10%;
+    opacity: 0.8;
 }
-
-@media only screen and (max-width: 600px){
-   #customer_feedback_per_week > svg{
-        width:"300px";
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

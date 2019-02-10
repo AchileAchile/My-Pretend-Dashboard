@@ -56,14 +56,21 @@ The tehnologies used for the design of this app are:
         +   It provides the IDE for the development of this project
 
 ## Additional Technologies Required to Use app:
-+   None
+None.
+This app is tested on chrome 71.0.3578.98, microsoft edge, and fireforx 64.0., firefox developers edition, android,  iOS is 12.1.4, and the desired result was achieved. No additional technology is required
+
+## Requirements to Build App
++   IDE e.g cloud9, notepad++
+
+## Features 
+This app provides a dashboard of barcharts, stacked barcharts, pie-charts, line graphs and composite charts
 
 ## UXD
 
 ## Wireframes
 
 ## TESTING
-####   FIREFOX DEV. TOOLS TESTING
+
 #####   Firefox Desktop Viewport Snapshot   
 ![Desktop Viewport Snapshot](Readmages/test_img/desktop.png "Desktop Viewport Snapshot")
 
@@ -73,26 +80,42 @@ The tehnologies used for the design of this app are:
 #####   Galaxy-SE Viewport Snapshot on Firefox Dev. Tools
 ![Galaxy-Se Viewport Snapshot](Readmages/test_img/galaxy-se.png "Galaxy-Se Viewport Snapshot")
 
+#### Responsive Mode on Firefox Dev. Tools
+![Responsive](/Readmages/test_img/responsive.png "Responsive")
+
 #####   Touch Screen Simulation Snapshot on Firefox 
 ![Touch Screen Simulation Snapshot](Readmages/test_img/touch.jpg "Touch Screen Simulation")
 
 #####   Live iPhone 6x Plus Snapshot
 ![live Iphone 6x plus Viewport](Readmages/test_img/iphone6x-plus-live.jpg "iphone 6x-plus live image")
 
-## GOOGLE CHROME DEV. TOOLS TESTING
-![Iphone5-SE Viewport](Readmages/test_img/iPhone 5_SE.png "iphonE5-SE")
-                
+#### GOOGLE CHROME DEV. TOOLS TESTING
+#####   iPhone5_SE Snapshot
+![Chrome Dev. tools](Readmages/test_img/iPhone5_SE.png "iphone 6x-plus live image")
+
++ This app is tested on chrome 71.0.3578.98, microsoft edge, and fireforx 64.0., Firefox Developers edition and the desired result was achieved.
++ w3c validator: The html and css file are validated by direct input at https://validator.w3.org/#validate_by_input and the necessary corrections were made.
+ 
+## Deployment
++   This app was deployed to github at this url [link](https://achileachile.github.io/Pretend-Dashboard/) through the following procedures:
+    +   Create github account e.g AchileAchile
+    +   pretend-dashboard developed on cloud9 as a master repo, is saved, added and commited to github 
+    +   Remote repo known as origin is created for pretend-dashboard on github account AchileAchile
+    +   The git push command is used on commandline to share the file between master and origin repository
+    +   To publish in github settings, the master branch is selected and saved at the github pages
     
 
 
-## Deployment
 ## Credits
++ stackoverflow
+    +   https://stackoverflow.com/questions/37937984/git-refusing-to-merge-unrelated-histories-on-rebase
+    +   https://stackoverflow.com/questions/16862933/how-to-resolve-gits-not-something-we-can-merge-error
+    +  https://help.github.com/articles/dealing-with-non-fast-forward-errors/ 
 
 ## Acknowledgements
-https://stackoverflow.com/questions/37937984/git-refusing-to-merge-unrelated-histories-on-rebase
-https://stackoverflow.com/questions/16862933/how-to-resolve-gits-not-something-we-can-merge-error
-https://help.github.com/articles/dealing-with-non-fast-forward-errors/
-https://developer.mozilla.org/en-US/docs/Tools/Responsive_Design_Mode
++   Mozilla Firefox
+    + https://developer.mozilla.org/en-US/docs/Tools/Responsive_Design_Mode
++   Code Institute: Tutor and Mentor
    
 
 
