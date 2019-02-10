@@ -63,9 +63,16 @@ The tehnologies used for the design of this app are:
 ## Wireframes
 
 ## Testing
-####   Firefox Developers Tool Simulation
+####   Firefox Developers Tool Simulation Testing
 #####   Firefox Desktop Viewport Snapshot   
-![Desktop Viewport Snapshot][<img src="Readmages/test_img/desktop.png/50/50">](Readmages/test_img/desktop.png "Firefox Desktop Viewport Snapshot")
+![Desktop Viewport Snapshot](Readmages/test_img/desktop.png "Desktop Viewport Snapshot")
+![Galaxy-Se Viewport Snapshot](Readmages/test_img/galaxy-se.png "Galaxy-Se Viewport Snapshot")
+![ipad-Pro Viewport Snapshot](Readmages/test_img/ipad-pro.png "ipad-Pro Viewport Sanpshot")
+![Touch Screen Simulation Snapshot](Readmages/test_img/touch.jpg "Touch Screen Simulation")
+![live Iphone 6x plus Viewport](Readmages/test_img/iphone6x-plus-live.jpg "iphone 6x-plus live image")
+
+#### Google chrome Dev. Tools Testing
+![iPhone5-SE Viewport Snapshot](Readmages/test_img/iPhone 5_SE.png "iphone5-SE on Google Chrome Dev. Tools")
                 
     
 
