@@ -63,8 +63,9 @@ The tehnologies used for the design of this app are:
 ## Wireframes
 
 ## Testing
-####    Firefox Simulation
-![responsive](Readmages/test_img/desktop.png "Firefox responsive snapshot")
+####   Firefox Developers Tool Simulation
+#####   Firefox Desktop Viewport Snapshot   
+![Desktop Viewport Snapshot][<img src="Readmages/test_img/desktop.png/50/50">](Readmages/test_img/desktop.png "Firefox Desktop Viewport Snapshot")
                 
     
 
@@ -72,11 +73,11 @@ The tehnologies used for the design of this app are:
 ## Deployment
 ## Credits
 
-
 ## Acknowledgements
 https://stackoverflow.com/questions/37937984/git-refusing-to-merge-unrelated-histories-on-rebase
 https://stackoverflow.com/questions/16862933/how-to-resolve-gits-not-something-we-can-merge-error
 https://help.github.com/articles/dealing-with-non-fast-forward-errors/
+https://developer.mozilla.org/en-US/docs/Tools/Responsive_Design_Mode
    
 
 
