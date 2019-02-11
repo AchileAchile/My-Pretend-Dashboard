@@ -69,29 +69,14 @@ This app provides a dashboard of barcharts, stacked barcharts, pie-charts, line 
 
 ## Wireframes
 
-## TESTING
+## TEST IMAGES
+
+#####   iPad-Pro Viewport on Firefox Dev. Tools
+![Mobile Viewport Snapshot](Readmages/test_img/mobile_viewport.png "ipad-Pro Viewport Sanpshot")
 
 #####   Firefox Desktop Viewport Snapshot   
 ![Desktop && iPad-Pro Viewport Snapshot](Readmages/test_img/desktop_ipad_pro.png "ipad-Pro Viewport Sanpshot")
 
-#####   iPad-Pro Viewport on Firefox Dev. Tools
-![ipad-Pro Viewport Snapshot](Readmages/test_img/ipad-pro.png "ipad-Pro Viewport Sanpshot")
-
-#####   Galaxy-SE Viewport Snapshot on Firefox Dev. Tools
-![Galaxy-Se Viewport Snapshot](Readmages/test_img/galaxy-se.png "Galaxy-Se Viewport Snapshot")
-
-#### Responsive Mode on Firefox Dev. Tools
-![Responsive](/Readmages/test_img/responsive.png "Responsive")
-
-#####   Touch Screen Simulation Snapshot on Firefox 
-![Touch Screen Simulation Snapshot](Readmages/test_img/touch.jpg "Touch Screen Simulation")
-
-#####   Live iPhone 6x Plus Snapshot
-![live Iphone 6x plus Viewport](Readmages/test_img/iphone6x-plus-live.jpg "iphone 6x-plus live image")
-
-#### GOOGLE CHROME DEV. TOOLS TESTING
-#####   iPhone5_SE Snapshot
-![Chrome Dev. tools](Readmages/test_img/iPhone5_SE.png "iphone 6x-plus live image")
 
 + This app is tested on chrome 71.0.3578.98, microsoft edge, and fireforx 64.0., Firefox Developers edition and the desired result was achieved.
 + w3c validator: The html and css file are validated by direct input at https://validator.w3.org/#validate_by_input and the necessary corrections were made.
