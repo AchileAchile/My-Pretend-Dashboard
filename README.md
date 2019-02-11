@@ -72,7 +72,7 @@ This app provides a dashboard of barcharts, stacked barcharts, pie-charts, line 
 ## TESTING
 
 #####   Firefox Desktop Viewport Snapshot   
-![Desktop Viewport Snapshot](Readmages/test_img/desktop.png "Desktop Viewport Snapshot")
+![ipad-Pro && Desktop Viewport Snapshot](Readmages/test_img/ipad_pro_desktop.jpg "ipad-Pro Viewport Sanpshot")
 
 #####   iPad-Pro Viewport on Firefox Dev. Tools
 ![ipad-Pro Viewport Snapshot](Readmages/test_img/ipad-pro.png "ipad-Pro Viewport Sanpshot")

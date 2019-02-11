@@ -21,6 +21,10 @@ i {
 
 span {
     color: #ffffff;
+    text-align: center;
+    padding: 2px;
+    font-weight: bold;
+    text-shadow: 0px 1px #840f0f;
 }
 
 #week_selector>span{
