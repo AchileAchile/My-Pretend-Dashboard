@@ -67,7 +67,8 @@ This app provides a dashboard of barcharts, stacked barcharts, pie-charts, line 
 
 ## UXD
 
-## Wireframes
+## WIFRAMES
+![WireFrames](Readmages/wireframes/wireframe_img.jpg)
 
 ## TESTING
 
