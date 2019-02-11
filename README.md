@@ -77,7 +77,7 @@ This app provides a dashboard of barcharts, stacked barcharts, pie-charts, line 
 ![Mobile Viewport Snapshot](Readmages/test_img/mobile_viewport.png "ipad-Pro Viewport Sanpshot")
 
 #####   Desktop and Tablets   
-![Desktop && iPad-Pro Viewport Snapshot](Readmages/test_img/desktop_ipad-pro.png "ipad-Pro Viewport Sanpshot")
+![Desktop && iPad-Pro Viewport Snapshot](Readmages/test_img/desktop_ipad_pro.png "ipad-Pro Viewport Sanpshot")
 
 
 ### Browser Testing and Markup Validation
