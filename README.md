@@ -85,9 +85,8 @@ This app provides a dashboard of barcharts, stacked barcharts, pie-charts, line 
 + w3c validator: The html and css file are validated by direct input at https://validator.w3.org/#validate_by_input and the necessary corrections were made.
 
 #### w3c Validation
-![w3c css validation image_1](Readmages/test_img/w3c_css_1.PNG)
-![w3c css validation image_2](Readmages/test_img/w3c_css_2.PNG)
-![w3c css validation image_3](Readmages/test_img/w3c_css_3.PNG)
+![w3c css validation image](Readmages/test_img/w3c_css.PNG)
+
 
 
  
