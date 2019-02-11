@@ -69,17 +69,27 @@ This app provides a dashboard of barcharts, stacked barcharts, pie-charts, line 
 
 ## Wireframes
 
-## TEST IMAGES
+## TESTING
 
-#####   iPad-Pro Viewport on Firefox Dev. Tools
+### Test Images
+
+#####   Mobile Viewport
 ![Mobile Viewport Snapshot](Readmages/test_img/mobile_viewport.png "ipad-Pro Viewport Sanpshot")
 
-#####   Firefox Desktop Viewport Snapshot   
+#####   Desktop and Tablets   
 ![Desktop && iPad-Pro Viewport Snapshot](Readmages/test_img/desktop_ipad_pro.png "ipad-Pro Viewport Sanpshot")
 
 
-+ This app is tested on chrome 71.0.3578.98, microsoft edge, and fireforx 64.0., Firefox Developers edition and the desired result was achieved.
+### Browser Testing and Markup Validation
++ This app is tested on chrome 71.0.3578.98, microsoft edge, and fireforx 64.0., Firefox Developers edition, opera and the desired result was achieved.
 + w3c validator: The html and css file are validated by direct input at https://validator.w3.org/#validate_by_input and the necessary corrections were made.
+
+#### w3c Validation
+![w3c css validation image_1](Readmages/test_img/w3c_css_1.PNG)
+![w3c css validation image_2](Readmages/test_img/w3c_css_2.PNG)
+![w3c css validation image_3](Readmages/test_img/w3c_css_3.PNG)
+
+
  
 ## Deployment
 +   This app was deployed to github at this url [link](https://achileachile.github.io/Pretend-Dashboard/) through the following procedures:

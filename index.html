@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-      <title>Pretend Dashboard</title>
-    
+    <title>Pretend Dashboard</title>
+
     <link rel="stylesheet" href="static/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="static/css/dc.min.css" type="text/css" />
-    
+
     <script type="text/javascript" src="static/js/d3.min.js"></script>
     <script type="text/javascript" src="static/js/crossfilter.min.js"></script>
     <script type="text/javascript" src="static/js/dc.min.js"></script>
     <script type="text/javascript" src="static/js/queue.min.js"></script>
     <link rel="stylesheet" href="static/css/style.css" type="text/css" />
 </head>
+
 <body>
     <section>
         <h2 class="col-md-6 mt-4" style="color: #f4a4a4; text-align: center;"><b>Pretend Customer Rating Dashboard</b></h2>
         <div class="container">
             <div class="row">
-                
+
                 <div class="col-xs-4 col-md-6 m-1" id="week_selector"><span>Week distribution Selector:<i>'week(s) category'</i> in 2018</span> </div>
                 <div class="col-xs-4 col-md-6 m-1" id="Month_selector"><span style="color: #f4a4a4; font-size: 1.2em;">Week distribution Selector: <i>'Month(s) category'</i> in 2018</span> </div>
             </div>
@@ -35,7 +37,7 @@
                 <div class="col-md-6 col-lg-3 m-1" id="average_rating_week"><span style="margin-left: 10%;">Average Customer <i>'rating'</i> per <i>'week distribution'</i></span></div>
                 <div class="col-md-6 col-lg-4 m-1" id="average_rating_month"><span style="margin-left: 10%;">Average Customer <i>'rating'</i> per <i>'Month'</i></span> </div>
             </div>
-            <div class="row m-2" >
+            <div class="row m-2">
                 <div class="col-md-6 col-lg-4 m-1" id="pie_customer_feedback_per_week"><span>Customer <i>'rating'</i> per <i>'week distribution'</i></span></div>
                 <div class="col-md-6 col-lg-3 m-1" id="pie_customers_feedback_per_month"><span>Customer <i>'rating'</i> per <i>'Month'</i></span></div>
                 <div class="col-md-6 col-lg-4 m-1" id="derived"><span>Derived Dimensions</span></div>
@@ -47,15 +49,16 @@
                 <div class="col-xs-12 col-md-12 m-2" id="date_annual_customers_feedback_chart"><span><i>'date'</i> dimension showing customer <i>'rating'</i> per <i>'week distribution'</i> per <i>'Month'</i> distribution</span></div>
             </div>
             <div class="row">
-                <div class="col-xs-12 col-md-12 m-2" id="line_annual_customers_feedback"><span>Total Annual <i>'rating'</i> per <i>'Month'</i><span></span></div>
+                <div class="col-xs-12 col-md-12 m-2" id="line_annual_customers_feedback"><span>Total Annual <i>'rating'</i> per <i>'Month'</i></span></div>
             </div>
             <div class="row">
                 <div class="col-xs-12 col-md-12 m-2" id="composite-chart"><span>Weekly customer <i>'rating'</i></span></div>
             </div>
             <div class="col-xs-12 col-md-12 m-2" id="composite-month"><span>Monthly customer <i>'rating'</i></span></div>
         </div>
-    
+
     </section>
-     <script type="text/javascript" src="static/js/reviewGraph.js"></script>
+    <script type="text/javascript" src="static/js/reviewGraph.js"></script>
 </body>
+
 </html>
