@@ -41,7 +41,7 @@ function pretendGraph(error, reviewData){
     pie_Month(ndx);
     pie_derived(ndx);
     scatter_plot(ndx);
-    date_feedback_chart(ndx);
+    date_vertical_chart(ndx);
     line_feedback_graph(ndx);
     composite_week_graph(ndx);
     composite_Month_graph(ndx);
@@ -338,10 +338,10 @@ function feedback_Month(ndx){
     };
 }
 
-function date_feedback_chart(ndx){
+function date_vertical_chart(ndx){
         var date_chart_dim = ndx.dimension(dc.pluck('date'));
         var total_period_rating = date_chart_dim.group().reduceSum(dc.pluck('rating'));
-        date_feedback = dc.barChart("#date_annual_customers_feedback_chart")
+        date_feedback = dc.barChart("#date_annual_vertical_chart")
             .width(width_date_annual)
             .height(400)
             .margins({top: 10, right: 50, bottom: 50, left: 50})
@@ -349,13 +349,13 @@ function date_feedback_chart(ndx){
             .group(total_period_rating)
             .transitionDuration(1000)
             .x(d3.time.scale().domain([minDate, maxDate]))
-            .xAxisLabel("2018 Annual Rating")
+            .xAxisLabel("2018 Annual Vertical Line Chart")
             .brushOn(false)
             .yAxis().ticks(5);
             
                      
         window.Onresize = function(event){
-            var newWidth = document.getElementById('date_annual_customers_feedback_chart').offsetWidth;
+            var newWidth = document.getElementById('date_annual_vertical_chart').offsetWidth;
             date_feedback.width(newWidth);
     };
  }

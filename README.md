@@ -1,16 +1,16 @@
-# [Pretend Dashboard]( https://achileachile.github.io/Pretend-Dashboard/)
+# [PRETEND DASHBOARD]( https://achileachile.github.io/Pretend-Dashboard/)
 
-## Purpose:
+## PURPOSE:
 <i>"Pretend Dashboard"</i> is a project work developed in partial fulfilment for the requirements of
 the Interactive Frontend Development by the Code Institute, Ireland.
 
-## Brief:
-####    CREATE A DATA DASHBOARD
+## BRIEF:
+####    CREATE A DATA DASHBOARD:
 Build a data dashboard that visualizes a dataset of your choice
 Your data can be stored locally (e.g., in a js file) or sourced from an API
 Visualise your data using D3.js and dc.js
 
-## Technologies Used and Dependencies
+## TECHNOLOGIES AND DEPENDENCIES
 The tehnologies used for the design of this app are:
 1. html5: 
     +   It provides the markup language used develop core content and structure of this application.
@@ -55,17 +55,68 @@ The tehnologies used for the design of this app are:
     +   https://c9.io/ufedo
         +   It provides the IDE for the development of this project
 
-## Additional Technologies Required to Use app:
+## ADDITIONAL TECHNOLOGY REQUIRED TO USE APP:
 None.
 This app is tested on chrome 71.0.3578.98, microsoft edge, and fireforx 64.0., firefox developers edition, android,  iOS is 12.1.4, and the desired result was achieved. No additional technology is required
 
-## Requirements to Build App
-+   IDE e.g cloud9, notepad++
+## REQUIREMENTS TO BUILD APP:
++   SUITABLE IDE e.g cloud9, notepad++
 
-## Features 
-This app provides a dashboard of barcharts, stacked barcharts, pie-charts, line graphs and composite charts
+## FEATURES AND USER EXPERIENCE: 
+Pretend Dashboard is developed from dataset stored in reveiw.json file, it contains information about how a given organization is rated in a customer feedback survey obtained in 2018.
+The dataset is subdivided into the following dimensions-
++   date
++   Month
++   week
++   rating
 
-## UXD
+Each of this dimensions is called by dc.js to plot the graph/chart or pie chart as the case maybe. The dataset is literarily defined by the 'week' dimension. The 'week' is subdivided into four categories
+which are passed on under which they values of the rating are distributed, and these are:
++   First 
++   Second
++   Third
++   Fourth
+
+The value of 'First' at any point in time represent the rating in the first week of the Month under review. Consider January for instance, 'First', will indicate the rating in the first week of the
+'Month'. 'Second' will also imply the rating for the second week of January and ditto for 'Third' and 'Fourth'. Thus, a Month is given by rating in 'First', 'Second', 'Third' and 'Fourth' as the case
+maybe.
+The Year 2018 is summed up in twelve months from January to December hence a total of twelve multiply by four weeks.
+At the top of the User Interface just below the heading there are two drop down boxes for 'week selector-week' and 'week selector-Month'. The 'week selector-week' provides a list of the following possible
+selections and information at initial click on:
++   Select All
++   First: 12
++   Second: 12
++   Third: 12
++   Fourth: 12
+
+This information implies that each of the 'week' category (i.e 'First', 'Second', 'Third' and 'Fourth') contains dataset for twelve distinct rating which corresponding to the weeks of the twelve Months in 
+the Year. In other words, there are twelve values for each of the 'week' category in twelve months period.
+Similary, the 'week selector-Month', displays the value for each of the Month in the Year under review for example Jan: 1, indicating that there is only one value for January in the data set and this 
+is the collection of corresponding values for the 'First', 'Second' 'Third' 'Fourth' for the month of January. This applies to the rest of the Month in through to December.
+When a particular Month is selected on the Month distribution of the 'week selector', the value on the corresponding week selector on the week distribution will display as follow:
++   First: 1
++   Second: 1
++   Third: 1
++   Fourth: 1
+
+This implies that each selected Month has one dataset corresponding to each of the category of the 'week'. Thus, when Jan: 1 is selected on the Month distirbution for instance, the drop down box will provides
+the user with the four options listed above and then the dashboard will display the corresponding value on each of the chart and graph ploted.
+Pretend Dashboard is made of blocks of the following charts and graphs:
+1.  A stacked chart for each of the 'week' distribution in the twelve months of 2018
+2.  A bar chart showing the gross rating(s) for each of the 'week' category in 2018
+3.  A bar chart showing the gross rating(s) for each Month of 2018
+4.  The average of the gross customer rating for each 'week(s)' category
+5.  The average of the gross customer rating fore each 'Month(s)' category
+6.  A Doughnut showing customer rating for each 'week' category
+7.  Customer rating per Month pie chart
+8.  A Derived dimension pie chart
+9.  Scatter plot
+10. Vertical line graph showing customer rating for each date in the dataset
+11. Line graph plucked on the date dimension for each date of the Year 2018
+12. Composite line graph for 'week' dimension
+13. Composite line graph for 'Month' dimension
+
+
 
 ## WIFRAMES
 ![WireFrames](Readmages/wireframes/wireframe_img.jpg)
@@ -91,7 +142,7 @@ This app provides a dashboard of barcharts, stacked barcharts, pie-charts, line 
 
 
  
-## Deployment
+## DEPLOYMENT:
 +   This app was deployed to github at this url [link](https://achileachile.github.io/Pretend-Dashboard/) through the following procedures:
     +   Create github account e.g AchileAchile
     +   pretend-dashboard developed on cloud9 as a master repo, is saved, added and commited to github 
@@ -101,13 +152,13 @@ This app provides a dashboard of barcharts, stacked barcharts, pie-charts, line 
     
 
 
-## Credits
+## CREDITS:
 + stackoverflow
     +   https://stackoverflow.com/questions/37937984/git-refusing-to-merge-unrelated-histories-on-rebase
     +   https://stackoverflow.com/questions/16862933/how-to-resolve-gits-not-something-we-can-merge-error
     +  https://help.github.com/articles/dealing-with-non-fast-forward-errors/ 
 
-## Acknowledgements
+## ACKNOWLEDGEMENTS:
 +   Mozilla Firefox
     + https://developer.mozilla.org/en-US/docs/Tools/Responsive_Design_Mode
 +   Code Institute: Tutor and Mentor
