@@ -62,7 +62,7 @@ This app is tested on chrome 71.0.3578.98, microsoft edge, and fireforx 64.0., f
 ## REQUIREMENTS TO BUILD APP:
 +   SUITABLE IDE e.g cloud9, notepad++
 
-## FEATURES AND USER EXPERIENCE: 
+## FEATURES: 
 Pretend Dashboard is developed from dataset stored in reveiw.json file, it contains information about how a given organization is rated in a customer feedback survey obtained in 2018.
 The dataset is subdivided into the following dimensions-
 +   date
@@ -72,13 +72,13 @@ The dataset is subdivided into the following dimensions-
 
 Each of this dimensions is called by dc.js to plot the graph/chart or pie chart as the case maybe. The dataset is literarily defined by the 'week' dimension. The 'week' is subdivided into four categories
 which are passed on under which they values of the rating are distributed, and these are:
-+   First 
-+   Second
-+   Third
-+   Fourth
++   'First' means first week of any Month
++   'Second' means second week of any Month
++   'Third' means third week of any Month
++   'Fourth' means fourth week of any Month
 
-The value of 'First' at any point in time represent the rating in the first week of the Month under review. Consider January for instance, 'First', will indicate the rating in the first week of the
-'Month'. 'Second' will also imply the rating for the second week of January and ditto for 'Third' and 'Fourth'. Thus, a Month is given by rating in 'First', 'Second', 'Third' and 'Fourth' as the case
+The value of 'First' at any point in date represents the rating in the first week of the Month under review. Consider January for instance, 'First', will indicate 
+the the value of customer review in the first week of 'January'. 'Second' will also imply the value for the second week of January and ditto for 'Third' and 'Fourth'. Thus, a Month is given by rating in 'First', 'Second', 'Third' and 'Fourth' as the case
 maybe.
 The Year 2018 is summed up in twelve months from January to December hence a total of twelve multiply by four weeks.
 At the top of the User Interface just below the heading there are two drop down boxes for 'week selector-week' and 'week selector-Month'. The 'week selector-week' provides a list of the following possible
@@ -89,18 +89,22 @@ selections and information at initial click on:
 +   Third: 12
 +   Fourth: 12
 
-This information implies that each of the 'week' category (i.e 'First', 'Second', 'Third' and 'Fourth') contains dataset for twelve distinct rating which corresponding to the weeks of the twelve Months in 
-the Year. In other words, there are twelve values for each of the 'week' category in twelve months period.
-Similary, the 'week selector-Month', displays the value for each of the Month in the Year under review for example Jan: 1, indicating that there is only one value for January in the data set and this 
-is the collection of corresponding values for the 'First', 'Second' 'Third' 'Fourth' for the month of January. This applies to the rest of the Month in through to December.
-When a particular Month is selected on the Month distribution of the 'week selector', the value on the corresponding week selector on the week distribution will display as follow:
+This information implies that each 'week' category (i.e 'First', 'Second', 'Third' and 'Fourth') contains twelve dataset, one for each of the twelve distinct 'Months' in the 'Month'
+dimension. This is just like Every Calender Month has four weeks in real life which follow each other in the chronological order of First Week, Second Week, Third Week and Fourth Week. Thus for the Twelve (12) Months of
+the Year there are 12 First Weeks. This is ditto for Second, Third and Fourth.
+In other words, each Month has one rating each in the 'First', 'Second', 'Third' and 'Fourth' category of the 'week' dimension, thereby adding up to a total
+of twelve values for each of the 'week' categories in this twelve months period.
+Similary, the 'week selector-Month', displays the value of rating for each of the Month in the Year under review. This value correspond to the agregates of the ratings
+of the corresponding 'First', 'Second', 'Third' and 'Fourth' 'week' category of the week dimension. For example, review rating in January, the week-selector Month
+Jan: 4, and the value of Jan: 4 denotes the numbers of data found for the Month of January which in this case is One for each of the 'week' category mention above. It also means that 
+there is only one value corresponding to Jan in the data under review. This applies to the rest of the Month in through to December.
+When a particular Month is selected on the Month distribution of the 'week selector', the value on the corresponding week-selector on the week distribution will display as follows:
 +   First: 1
 +   Second: 1
 +   Third: 1
 +   Fourth: 1
 
-This implies that each selected Month has one dataset corresponding to each of the category of the 'week'. Thus, when Jan: 1 is selected on the Month distirbution for instance, the drop down box will provides
-the user with the four options listed above and then the dashboard will display the corresponding value on each of the chart and graph ploted.
+This implies that each selected Month has one dataset corresponding to each of the category of the 'week' under the week dimesion in the review.json. 
 Pretend Dashboard is made of blocks of the following charts and graphs:
 1.  A stacked chart for each of the 'week' distribution in the twelve months of 2018
 2.  A bar chart showing the gross rating(s) for each of the 'week' category in 2018
@@ -116,6 +120,63 @@ Pretend Dashboard is made of blocks of the following charts and graphs:
 12. Composite line graph for 'week' dimension
 13. Composite line graph for 'Month' dimension
 
+
+##  USER EXPERIENCE
+The charts, pie charts, and graphs listed above are ploted using dc.js just from one dataset (review.json) as a result they share a common dependency and are responsive
+to one another. This is to say that if a value is clicked on any of the charts, the other dashboard will display a corresponding value to the date, week and Month which is defined by that dataset.
+Users are provided with the following select options on the dashboard:
+1.  week selector-week-
+    +   Select all
+    +   First: 12
+    +   Second: 12
+    +   Third: 12
+    +   Fourth: 12
+2.  week selector-Month-
+    +   Select all
+    +   Jan: 4
+    +   Feb: 4
+    +   March: 4
+    +   April: 4
+    +   May: 4
+    +   Jun: 4
+    +   Jul: 4
+    +   Aug: 4
+    +   Sept: 4
+    +   Oct: 4
+    +   Nov: 4
+    +   Dec: 4
+
+This selectors enable users to querry the dashboard and carry out the following operations:
+1.  To view the total rating available on the dashboard, select 'Select all' on both the week and Month selectors
+2.  To view a particular week category in a given month, select the desired month and the desired week. For example, to view the First week of January select Jan: 4 on the Month selector and First: 1.
+    This value when selected, Jan: 4 will change to Jan: 1 and both selectors will then display Jan: 1, First: 1 on the month and week selectors respectively. This final information indicate that the users
+    is viewing the one data in January from the one available rating from the First week of the month. 
+3.  Users can view the ratings in the twelve weeks for each of the category in the 'week' dimension by selecting 'Select all' on the Month selector and the desired category on the week selector e.g First: 12
+4.  Users may also querry the dashboard by clicking directly on the chart for the desired information. For instance, users can view the average rating in the first week of every month by clicking on the
+    'First' column of the average rating bar chart.
+
+Pretend Dashboard also provide a special feature called the Derived dimension pie-chart. This pie-chart is divided into the following sections:
+1.  Poor for ratings lesser than 40
+2.  Average for ratings between 40 and 50
+3.  Good for ratings between 50 and 70
+4.  Excellent for ratings over 70
+
+When users click on any of this sub division, the dashboard will show the corresponding month and week which this inference is accrued to. For instance when the 'Average' is clicked on the derived pie-chart
+the Month 'June' and 'Fourth' is highlighted on the charts on the dashboard. This simply indicate that the rating of the Fourth Week of June is Average. Users can querry the dashboard for periods with Excellent, Good and
+Poor ratings and make a decision on which of period to use the service of this organisation. In this example, the month of Feb, Aug and Nov rated as Excellent in three out of four weeks. Although the dashboard
+did not give reason for this rating, it is natural for customers and clients have more tendency to do business with this organisation than in any other month of the year.
+
+However, the vertical line chart and the scatter plot provides specific information which are narrowed down to each of the date in the dataset. On the vertical line chart, each line represents each date
+plucked from the 'date' dimension. The line chart contains one line per week and four per month. When hovered on, each line provides specific information on the value of rating on the day,
+for instance, the tallest line on the chart display the following information "Mon May 21 2018 00:00:00 GMT(British Summer Time):158" information when hovered on, and this is obviously the date with the highest rating in 2018.
+The Scatter Plot provides similar information but can be configured to produce more meaningful information. For instance when hovered on, one of the red dots provides the following information "Fourth week rating
+equals 97 on Mon Nov 26 2018 00:00:00 GMT+000(Greenwhich Mean Time)"
+The scatter plot is plucked from the 'week' dimension by dc.js and each of the dots represents values per rating. The color codes indicates the category of the week which the rating belongs to. The color
+codes for each week category on the scatter plot are as follows:
+1. blue for 'First'
+2. yellow for 'Second'
+3. green for 'Third'
+4. red for 'Fourth'
 
 
 ## WIFRAMES
@@ -163,31 +224,3 @@ Pretend Dashboard is made of blocks of the following charts and graphs:
     + https://developer.mozilla.org/en-US/docs/Tools/Responsive_Design_Mode
 +   Code Institute: Tutor and Mentor
    
-
-
-
-
-
-
-
-
-Project Purpose 5,
-UX design 4, 
-Suitability for purpose 3, 
-Navigation 3,
-Ease of Use 4, 
-Information Architecture 4, 
-Responsive Design 3, 
-Image Presentation 3,
-Colour scheme and typography 2, 
-Appropriate use of HTML 3, 
-Appropriate use of CSS 4, 
-Directory Structure and File Naming 4, 
-Version Control 2, 
-Testing implementation 2, 
-Testing write-up 2, Readme file 3, 
-Comments 3, 
-Deployment implementation 5, 
-Deployment write-up 0
-
-

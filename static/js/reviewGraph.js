@@ -2,7 +2,7 @@ queue()
     .defer(d3.json, "data/review.json")
     .await(pretendGraph);
     
-    var minDate, maxDate;
+    let minDate, maxDate;
     
     
     var width_stacked_week = document.getElementById('stacked_chart_week').offsetWidth;
