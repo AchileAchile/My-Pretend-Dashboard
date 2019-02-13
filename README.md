@@ -204,7 +204,7 @@ codes for each week category on the scatter plot are as follows:
 
  
 ## DEPLOYMENT:
-+   This app was deployed to github at this url [link](https://achileachile.github.io/Pretend-Dashboard/) through the following procedures:
++   This app was deployed to github at this url https://achileachile.github.io/Pretend-Dashboard through the following procedures:
     +   Create github account e.g AchileAchile
     +   pretend-dashboard developed on cloud9 as a master repo, is saved, added and commited to github 
     +   Remote repo known as origin is created for pretend-dashboard on github account AchileAchile
